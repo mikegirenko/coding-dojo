@@ -1,11 +1,15 @@
 """
-Actors:
 1. program to parse arguments
-    accept list of arguments and pass to parser
-2. parser
-        schema specifying what arguments accepted
-2. dictionary of arguments:
-        flags and with values
-        flag is one character preceded by minus sign (-)
-        value can be zero or one value
+        accept list of arguments
+        verify it matches the schema
+        pass it to parser
 """
+
+
+class MyProgram:
+    def __init__(self, list_of_args):
+        self.this_list = []
+        self.this_list = list_of_args
+
+    def accept_list_of_args(self):
+        return self.this_list
