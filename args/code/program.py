@@ -1,8 +1,7 @@
 """
 1. program to parse arguments
-        accept list of arguments
-        verify it matches the schema
-        pass it to parser
+        a) accept list of arguments
+        b) pass it to parser
 """
 
 
