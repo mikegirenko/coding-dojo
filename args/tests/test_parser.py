@@ -8,9 +8,15 @@ def test_parser_accepts_schema():
     assert obj.return_accepted_schema
 
 
-def test_parser_verifies_arguments():
+def test_parser_returns_true_if_arguments_match_schema():
     schema = ["-l", "-p", "-d"]
-    args = {"-b": False, "-p": 8080, "-d": "/usr/logs"}
+    args = {"-l": False, "-p": 8080, "-d": "/usr/logs"}
     obj = MyParser(schema, args)
-    obj.verify_arguments()
+    assert obj.verify_arguments()
 
+
+def test_parser_returns_false_if_arguments_do_not_match_schema():
+    schema = ["-l", "-p", "-d"]
+    args = {"-W": False, "-p": 8080, "-d": "/usr/logs"}
+    obj = MyParser(schema, args)
+    assert not obj.verify_arguments()
