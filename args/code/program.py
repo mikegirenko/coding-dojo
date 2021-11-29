@@ -1,10 +1,3 @@
-"""
-1. program to parse arguments
-        a) accept list of arguments
-        b) pass it to parser
-"""
-
-
 class MyProgram:
     def __init__(self, list_of_args):
         self.this_list = []

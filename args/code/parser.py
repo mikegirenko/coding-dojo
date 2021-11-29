@@ -1,12 +1,3 @@
-"""
-parser
-        a) accept schema specifying number of flags, types, and accepted values
-        b) verify list of arguments matches the schema
-        c) specify
-
-"""
-
-
 class MyParser:
     def __init__(self, schema, arguments):
         self.schema = []
