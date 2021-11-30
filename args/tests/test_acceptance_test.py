@@ -8,7 +8,7 @@ big to pass right away
 arguments_list = {"-l": False, "-p": 8080, "-d": "/usr/logs"}
 
 
-def test_parse_arguments():
+def test_accept_arguments():
     obj = MyProgram(arguments_list)
     assert obj.accept_list_of_args() == arguments_list
 
