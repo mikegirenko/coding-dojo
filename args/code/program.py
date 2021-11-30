@@ -1,3 +1,5 @@
+from args.code.parser import MyParser
+
 class MyProgram:
     def __init__(self, list_of_args):
         self.this_list = {}
@@ -5,6 +7,9 @@ class MyProgram:
 
     def accept_list_of_args(self):
         return self.this_list
+
+    def pass_arguments_to_parser(self):
+        MyParser.verify_arguments()
 
     def return_one_flag_value(self, one_argument_flag):
         for flag in self.this_list.keys():
