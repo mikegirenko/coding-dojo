@@ -1,21 +1,18 @@
 class MyParser:
     def __init__(self, schema, arguments):
-        self.schema = []
         self.schema = schema
         self.arguments = {}
         self.arguments = arguments
 
-    def return_accepted_schema(self):
-        return self.schema
 
-    def verify_arguments(self):
-        schema = self.return_accepted_schema()
+    def verify_list_of_arguments_matches_the_schema(self):
+        schema = self.schema
         arguments = self.arguments
         arguments_value = False
         # verify list of arguments matches the schema
         for flag in schema:
             if flag not in arguments.keys():
-                print("List of arguments does not have" , flag, "flag")
+                print("List of arguments does not have", flag, "flag")
                 return arguments_value
             else:
                 arguments_value = True
