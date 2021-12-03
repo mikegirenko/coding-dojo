@@ -1,5 +1,4 @@
 from args.code.program import MyProgram
-from args.code.parser import MyParser
 
 
 def test_program_accepts_list_of_args():

@@ -4,7 +4,6 @@ class MyParser:
         self.arguments = {}
         self.arguments = arguments
 
-
     def verify_list_of_arguments_matches_the_schema(self):
         schema = self.schema
         arguments = self.arguments
