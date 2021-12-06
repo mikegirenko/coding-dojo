@@ -16,3 +16,12 @@ class MyParser:
             else:
                 arguments_value = True
                 return arguments_value
+
+    def return_default_value(self):
+        default_values = {"-l": False, "-p": 8080, "-d": "/usr/logs"}
+        schema = self.schema
+        arguments = self.arguments
+
+        for flag in schema:
+            if arguments[flag] == None:
+                return default_values[flag]
