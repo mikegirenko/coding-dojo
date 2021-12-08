@@ -17,3 +17,4 @@ Actors:
         c) specify number of flags, types, and accepted values                
         d) return specific flag and it's value to the program
         e) return suitable default value, if flag missing it
+        f) verify flag cannot have negative integer
