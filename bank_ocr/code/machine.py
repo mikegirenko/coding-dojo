@@ -2,15 +2,17 @@
 class Machine:
     def __init__(self, letter):
         self.letter = letter
-        self.output_file = []
 
-    def validate_letter_and_populate_file(self):
+    def populate_account_numbers(self):
         raw_input = self.letter
+        list_with_account_numbers = []
         for character in raw_input:
             if isinstance(character, int):
-                self.output_file.append(character)
-        print(self.output_file)
-        return self.output_file
+                list_with_account_numbers.append(character)
+        return list_with_account_numbers
+
+    def create_line_27_characters_long(self):
+        return " " * 27
 
     def accept_letter_and_produce_file(self):
-        print("File populated with", self.validate_letter_and_populate_file())
+        print("File populated with", self.populate_account_numbers())
