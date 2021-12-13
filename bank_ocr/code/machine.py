@@ -14,5 +14,22 @@ class Machine:
     def create_line_27_characters_long(self):
         return " " * 27
 
+    def print_one_cell(self, character):
+        print(character)
+
+    def populate_number_one(self):
+        print(" ")
+        print("| ")
+        print("| ", end=" ")
+
+    def populate_number_two(self):
+        print("_")
+        print("_|")
+        print("|_")
+
+    def print_account_number(self):
+        self.populate_number_one()
+        self.populate_number_two()
+
     def accept_letter_and_produce_file(self):
         print("File populated with", self.populate_account_numbers())

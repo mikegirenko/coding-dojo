@@ -27,6 +27,7 @@ _Kata: Bank OCR_
         * each entry is 4 lines long
         * each line has 27 characters
         * the first 3 lines of each entry contain account number
+        * each number written using pipes and underscores
         * the fourth line is blank
     c) each account number should have 9 digits, 0-9 only
     d) a file contains around 500 entries
