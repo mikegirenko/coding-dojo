@@ -17,19 +17,29 @@ class Machine:
     def print_one_cell(self, character):
         print(character)
 
+    def populate_number_zero(self):
+        return ("* _ *\n*|_|*\n*|_|*")
+
     def populate_number_one(self):
-        print(" ")
-        print("| ")
-        print("| ", end=" ")
+        return("*  *\n* |*\n* |*")
 
     def populate_number_two(self):
-        print("_")
-        print("_|")
-        print("|_")
+        return ("*_ *\n*_|*\n*|_*")
+
+    def populate_number_three(self):
+        return ("*_ *\n*_|*\n*_|*")
 
     def print_account_number(self):
-        self.populate_number_one()
-        self.populate_number_two()
+        output_file = open('output_file.txt', 'a')
+        output_file.write(self.populate_number_zero())
+        output_file.write("\nseparator\n")
+        output_file.write(self.populate_number_one())
+        output_file.write("\nseparator\n")
+        output_file.writelines(self.populate_number_two())
+        output_file.write("\nseparator\n")
+        output_file.writelines(self.populate_number_three())
+        output_file.write("\nseparator\n")
+        output_file.close()
 
     def accept_letter_and_produce_file(self):
         print("File populated with", self.populate_account_numbers())
