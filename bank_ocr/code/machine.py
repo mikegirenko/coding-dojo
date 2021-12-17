@@ -79,7 +79,12 @@ class Machine:
                 output_file.write(self.populate_number_nine())
         output_file.close()
 
-    # TODO update it
     def accept_letter_and_produce_file(self):
         self.populate_file_with_real_account_numbers()
         print("File populated with", self.extract_account_numbers())
+
+
+if __name__ == "__main__":
+    letter = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    obj = Machine(letter)
+    obj.accept_letter_and_produce_file()

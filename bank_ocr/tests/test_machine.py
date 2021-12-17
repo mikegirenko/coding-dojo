@@ -1,7 +1,6 @@
 """
 List of tests:
-
-
+validate the numbers make a valid account number
 """
 from bank_ocr.code.machine import Machine
 
