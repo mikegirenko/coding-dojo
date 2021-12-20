@@ -89,3 +89,9 @@ def test_populate_file_with_real_account_numbers():
     letter = [0, 1, 2, 3, "W", 4, 5, 6, 7, 8, 9]
     obj = Machine(letter)
     obj.populate_file_with_real_account_numbers()
+
+
+def test_validate_numbers_make_valid_account_number():
+    letter = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    obj = Machine(letter)
+    assert obj.checksum()

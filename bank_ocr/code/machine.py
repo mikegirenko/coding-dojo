@@ -83,6 +83,28 @@ class Machine:
         self.populate_file_with_real_account_numbers()
         print("File populated with", self.extract_account_numbers())
 
+    def checksum(self):
+        account_numbers = self.extract_account_numbers()
+        valid_checksum = False
+        print(account_numbers)
+        pair_1 = account_numbers[0] + account_numbers[1]
+        pair_2 = account_numbers[1] + account_numbers[2]
+        pair_3 = account_numbers[2] + account_numbers[3]
+        pair_4 = account_numbers[3] + account_numbers[4]
+        pair_5 = account_numbers[4] + account_numbers[5]
+        pair_6 = account_numbers[5] + account_numbers[6]
+        pair_7 = account_numbers[6] + account_numbers[7]
+        pair_8 = account_numbers[7] + account_numbers[8]
+        pair_9 = account_numbers[8] + account_numbers[9]
+        sum_of_pairs = pair_1 + pair_2 + pair_3 + pair_4 + pair_5 + pair_6 + pair_7 + pair_8 + pair_9
+        print(sum_of_pairs)
+        in_parenthesis = (sum_of_pairs + 9) * account_numbers[9]
+        print("in_parenthesis", in_parenthesis)
+        if in_parenthesis % 11 == 0: # TODO continue here
+            valid_checksum = True
+        print("valid_checksum", valid_checksum)
+        return valid_checksum
+
 
 if __name__ == "__main__":
     letter = [1, 2, 3, 4, 5, 6, 7, 8, 9]
