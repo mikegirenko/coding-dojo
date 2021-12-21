@@ -30,4 +30,6 @@ _Kata: Bank OCR_
         * each number written using pipes and underscores
         * the fourth line is blank
     c) each account number should have 9 digits, 0-9 only
-    d) a file contains around 500 entries
+    d) each account number is a valid checksum:
+        * checksum calculation: (d1+2*d2+3*d3+...+9*d9) mod 11 = 0
+    e) a file contains around 500 entries
