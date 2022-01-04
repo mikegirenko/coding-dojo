@@ -32,4 +32,5 @@ _Kata: Bank OCR_
     c) each account number should have 9 digits, 0-9 only
     d) each account number is a valid checksum:
         * checksum calculation: (d1+2*d2+3*d3+...+9*d9) mod 11 = 0
-    e) a file contains around 500 entries
+    e) if some characters are illegible, they are replaced by a ?
+    f) a file contains around 500 entries

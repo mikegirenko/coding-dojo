@@ -3,13 +3,26 @@ class Machine:
     def __init__(self, letter):
         self.letter = letter
 
-    def extract_account_numbers(self):
+    def extract_account_numbers(self): # TODO continue here, User Story 3
         raw_input = self.letter
         list_with_account_numbers = []
         for character in raw_input:
-            if isinstance(character, int):
+            if not isinstance(character, int):
+                list_with_account_numbers.append("?")
+            else:
                 list_with_account_numbers.append(character)
         return list_with_account_numbers
+
+    def illegible_character_replaced(self):
+        account_numbers = self.extract_account_numbers()
+        replaced_account_numbers = []
+        for character in account_numbers:
+            if not isinstance(character, int):
+                replaced_account_numbers.append("?")
+            else:
+                replaced_account_numbers.append(character)
+        print("replaced_account_numbers", replaced_account_numbers)
+        return replaced_account_numbers
 
     def create_line_27_characters_long(self):
         return " " * 27
@@ -105,3 +118,5 @@ if __name__ == "__main__":
     letter = [1, 2, 3, 4, 5, 6, 7, 8, 9]
     obj = Machine(letter)
     obj.accept_letter_and_produce_file()
+
+# TODO All functions are working together

@@ -19,9 +19,10 @@ def test_machine_reads_letter():
 
 
 def test_machine_extracts_account_numbers():
-    letter = ["m", 1, 2, 3, "W", 4, 5, 6, 7, 8, 9]
+    letter = ["m", 1, 2, 3, "W", 4]
+    expected_letter = ["?", 1, 2, 3, "?", 4]
     obj = Machine(letter)
-    assert letter != obj.extract_account_numbers()
+    assert expected_letter == obj.extract_account_numbers()
 
 
 def test_create_line_27_characters_long():
