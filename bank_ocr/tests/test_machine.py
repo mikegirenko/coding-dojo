@@ -92,13 +92,13 @@ def test_populate_file_with_real_account_numbers():
     obj.populate_file_with_real_account_numbers()
 
 
-def test_check_if_account_number_valid_validates_account_numbers():
+def test_check_if_account_number_has_valid_checksum_validates_account_numbers():
     letter = [11,  0,  0,  0,  0,  0,  0,  0,  0]
     obj = Machine(letter)
-    assert obj.check_if_account_number_valid()
+    assert obj.check_if_account_number_has_valid_checksum()
 
 
-def test_check_if_account_number_valid_does_not_validate_account_numbers():
+def test_check_if_account_number_has_valid_checksum_does_not_validate_account_numbers():
     letter = [-2,  0,  0,  0,  0,  0,  0,  0,  1]
     obj = Machine(letter)
-    assert not obj.check_if_account_number_valid()
+    assert not obj.check_if_account_number_has_valid_checksum()

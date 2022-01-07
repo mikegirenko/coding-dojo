@@ -13,17 +13,6 @@ class Machine:
                 list_with_account_numbers.append(character)
         return list_with_account_numbers
 
-    def illegible_character_replaced(self):
-        account_numbers = self.extract_account_numbers()
-        replaced_account_numbers = []
-        for character in account_numbers:
-            if not isinstance(character, int):
-                replaced_account_numbers.append("?")
-            else:
-                replaced_account_numbers.append(character)
-        print("replaced_account_numbers", replaced_account_numbers)
-        return replaced_account_numbers
-
     def create_line_27_characters_long(self):
         return " " * 27
 
@@ -96,7 +85,7 @@ class Machine:
         self.populate_file_with_real_account_numbers()
         print("File populated with", self.extract_account_numbers())
 
-    def check_if_account_number_valid(self):
+    def check_if_account_number_has_valid_checksum(self):
         account_numbers = self.extract_account_numbers()
         valid_checksum = False
         pair_1 = account_numbers[-1] + 2
@@ -120,3 +109,10 @@ if __name__ == "__main__":
     obj.accept_letter_and_produce_file()
 
 # TODO All functions are working together
+"""
+accept letter
+confirm account number has a valid checksum. If yes, write to file. If not, 
+write to file and add ERR # TODO continue here!!!
+confirm account number has valid characters. If yes, write to file. If not, 
+replace invalid character with ?, write to file, and add ILL
+"""
