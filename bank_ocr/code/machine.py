@@ -3,7 +3,7 @@ class Machine:
     def __init__(self, letter):
         self.letter = letter
 
-    def extract_account_numbers(self): # TODO continue here, User Story 3
+    def extract_account_numbers(self):
         raw_input = self.letter
         list_with_account_numbers = []
         for character in raw_input:
@@ -117,11 +117,4 @@ if __name__ == "__main__":
     obj = Machine(letter)
     obj.accept_letter_and_produce_file()
 
-# TODO All functions need to be working together
-"""
-accept letter
-confirm account number has a valid checksum. If yes, write to file. If not, 
-write to file and add ERR
-confirm account number has valid characters. If yes, write to file. If not, 
-replace invalid character with ?, write to file, and add ILL
-"""
+# TODO cover all test cases
