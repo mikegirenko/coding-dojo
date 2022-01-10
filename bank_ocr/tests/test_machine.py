@@ -1,6 +1,6 @@
 """
 List of tests:
-validate the numbers make a valid account number
+
 """
 from bank_ocr.code.machine import Machine
 
@@ -98,7 +98,35 @@ def test_check_if_account_number_has_valid_checksum_validates_account_numbers():
     assert obj.check_if_account_number_has_valid_checksum()
 
 
+def test_check_if_account_number_has_another_valid_checksum_validates_account_numbers():
+    letter = [0,  0,  0,  0,  0,  0,  0,  5,  1]
+    obj = Machine(letter)
+    assert obj.check_if_account_number_has_valid_checksum()
+
+
 def test_check_if_account_number_has_valid_checksum_does_not_validate_account_numbers():
     letter = [-2,  0,  0,  0,  0,  0,  0,  0,  1]
     obj = Machine(letter)
     assert not obj.check_if_account_number_has_valid_checksum()
+
+
+def test_all_zeroes():
+    letter = [0, 0, 0, 0, 0, 0, 0, 0, 0]
+    obj = Machine(letter)
+    obj.accept_letter_and_produce_file()
+
+
+def test_all_ones():
+    letter = [1, 1, 1, 1, 1, 1, 1, 1, 1]
+    obj = Machine(letter)
+    obj.accept_letter_and_produce_file()
+
+
+def test_random_numbers():
+    letter = [0, 0, 0, 0, 0, 0, 0, 5, 1]
+    obj = Machine(letter)
+    obj.accept_letter_and_produce_file()
+
+
+def test_illegible_characters():
+    pass
