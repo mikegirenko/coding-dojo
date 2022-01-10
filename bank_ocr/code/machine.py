@@ -47,9 +47,10 @@ class Machine:
         return ("* _*\n*|_|*\n* _|*")
 
     def populate_file_with_real_account_numbers(self):
-        real_account_numbers = self.extract_account_numbers()
+        account_numbers = self.extract_account_numbers()
+        checksum_status = self.check_if_account_number_has_valid_checksum()
         output_file = open('output_file.txt', 'a')
-        for i in range(len(real_account_numbers)):
+        for i in range(len(account_numbers)):
             if i == 0:
                 output_file.write(self.populate_number_zero())
                 output_file.write("\n")
@@ -79,6 +80,13 @@ class Machine:
                 output_file.write("\n")
             if i == 9:
                 output_file.write(self.populate_number_nine())
+                output_file.write("\n")
+        if not checksum_status:
+            if "?" not in account_numbers:
+                output_file.write("ERR")
+        if not checksum_status:
+            if "?" in account_numbers:
+                output_file.write("ILL")
         output_file.close()
 
     def accept_letter_and_produce_file(self):
@@ -88,18 +96,19 @@ class Machine:
     def check_if_account_number_has_valid_checksum(self):
         account_numbers = self.extract_account_numbers()
         valid_checksum = False
-        pair_1 = account_numbers[-1] + 2
-        pair_2 = account_numbers[-2] + 3
-        pair_3 = account_numbers[-3] + 4
-        pair_4 = account_numbers[-4] + 5
-        pair_5 = account_numbers[-5] + 6
-        pair_6 = account_numbers[-6] + 7
-        pair_7 = account_numbers[-7] + 8
-        pair_8 = account_numbers[-8] + 9
-        all_pairs = pair_1 * pair_2 * pair_3 * pair_4 * pair_5 * pair_6 * pair_7 * pair_8
-        in_parenthesis = all_pairs * account_numbers[-9]
-        if in_parenthesis % 11 == 0:
-            valid_checksum = True
+        if "?" not in account_numbers:
+            pair_1 = account_numbers[-1] + 2
+            pair_2 = account_numbers[-2] + 3
+            pair_3 = account_numbers[-3] + 4
+            pair_4 = account_numbers[-4] + 5
+            pair_5 = account_numbers[-5] + 6
+            pair_6 = account_numbers[-6] + 7
+            pair_7 = account_numbers[-7] + 8
+            pair_8 = account_numbers[-8] + 9
+            all_pairs = pair_1 * pair_2 * pair_3 * pair_4 * pair_5 * pair_6 * pair_7 * pair_8
+            in_parenthesis = all_pairs * account_numbers[-9]
+            if in_parenthesis % 11 == 0:
+                valid_checksum = True
         return valid_checksum
 
 
@@ -108,11 +117,11 @@ if __name__ == "__main__":
     obj = Machine(letter)
     obj.accept_letter_and_produce_file()
 
-# TODO All functions are working together
+# TODO All functions need to be working together
 """
 accept letter
 confirm account number has a valid checksum. If yes, write to file. If not, 
-write to file and add ERR # TODO continue here!!!
+write to file and add ERR
 confirm account number has valid characters. If yes, write to file. If not, 
 replace invalid character with ?, write to file, and add ILL
 """
