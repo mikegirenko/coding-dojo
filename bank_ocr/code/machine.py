@@ -1,4 +1,3 @@
-
 class Machine:
     def __init__(self, letter):
         self.letter = letter
@@ -13,43 +12,40 @@ class Machine:
                 list_with_account_numbers.append(character)
         return list_with_account_numbers
 
-    def create_line_27_characters_long(self):
-        return " " * 27
-
     def populate_number_zero(self):
-        return ("* _ *\n*|_|*\n*|_|*")
+        return "* _ *\n*|_|*\n*|_|*"
 
     def populate_number_one(self):
-        return("*  *\n* |*\n* |*")
+        return "*  *\n* |*\n* |*"
 
     def populate_number_two(self):
-        return ("*_ *\n*_|*\n*|_*")
+        return "*_ *\n*_|*\n*|_*"
 
     def populate_number_three(self):
-        return ("*_ *\n*_|*\n*_|*")
+        return "*_ *\n*_|*\n*_|*"
 
     def populate_number_four(self):
-        return ("*  *\n*|_|*\n*  |*")
+        return "*  *\n*|_|*\n*  |*"
 
     def populate_number_five(self):
-        return ("* _*\n*|_*\n*_|*")
+        return "* _*\n*|_*\n*_|*"
 
     def populate_number_six(self):
-        return ("* _*\n*|_*\n*|_|*")
+        return "* _*\n*|_*\n*|_|*"
 
     def populate_number_seven(self):
-        return ("* _*\n* |*\n* |*")
+        return "* _*\n* |*\n* |*"
 
     def populate_number_eight(self):
-        return ("* _ *\n*|_|*\n*|_|*")
+        return "* _ *\n*|_|*\n*|_|*"
 
     def populate_number_nine(self):
-        return ("* _*\n*|_|*\n* _|*")
+        return "* _*\n*|_|*\n* _|*"
 
     def populate_file_with_real_account_numbers(self):
         account_numbers = self.extract_account_numbers()
         checksum_status = self.check_if_account_number_has_valid_checksum()
-        output_file = open('output_file.txt', 'a')
+        output_file = open("output_file.txt", "a")
         for i in range(len(account_numbers)):
             if i == 0:
                 output_file.write(self.populate_number_zero())
@@ -105,7 +101,9 @@ class Machine:
             pair_6 = account_numbers[-6] + 7
             pair_7 = account_numbers[-7] + 8
             pair_8 = account_numbers[-8] + 9
-            all_pairs = pair_1 * pair_2 * pair_3 * pair_4 * pair_5 * pair_6 * pair_7 * pair_8
+            all_pairs = (
+                pair_1 * pair_2 * pair_3 * pair_4 * pair_5 * pair_6 * pair_7 * pair_8
+            )
             in_parenthesis = all_pairs * account_numbers[-9]
             if in_parenthesis % 11 == 0:
                 valid_checksum = True
@@ -116,5 +114,3 @@ if __name__ == "__main__":
     letter = [1, 2, 3, 4, 5, 6, 7, 8, 9]
     obj = Machine(letter)
     obj.accept_letter_and_produce_file()
-
-# TODO cover all test cases
