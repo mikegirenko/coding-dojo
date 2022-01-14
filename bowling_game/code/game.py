@@ -20,12 +20,20 @@ class Game:
             frame_over = True
         return frame_over
 
-
     def generate_score(self):
         legit_chars = ["x", "/", "-"]
         score = []
         for i in range(1, 4):
-             score.append(legit_chars[random.randint(0, len(legit_chars) - 1)])
+            score.append(legit_chars[random.randint(0, len(legit_chars) - 1)])
+        return score
+
+    def calculate_score(self):
+        generated_score = self.generate_score()
+        print("generated_score", generated_score)
+        score = 0
+        for element in generated_score:
+            if element == "x":
+                score += 1
         return score
 
 

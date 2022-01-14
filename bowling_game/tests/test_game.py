@@ -18,6 +18,7 @@ def test_two_tries_stopping_frame():
         if i == 2:
             assert frame_stopped
 
+
 def test_generate_pins_creates_three_pins():
     roll = ["x", "x", "x", "x", "x", "x", "x", "x", "x"]
     game_object = Game(roll)
@@ -32,3 +33,9 @@ def test_generate_pins_creates_correct_pins():
     returned_score = game_object.generate_score()
     print("returned_score", returned_score)
     assert any(element in ["x", "/", "-"] for element in returned_score)
+
+
+def test_calculate_score():
+    roll = ["x", "x", "x", "x", "x", "x", "x", "x", "x"]
+    game_object = Game(roll)
+    print("score is", game_object.calculate_score())
