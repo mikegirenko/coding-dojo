@@ -32,5 +32,16 @@ _Kata: Bank OCR_
     c) each account number should have 9 digits, 0-9 only
     d) each account number is a valid checksum:
         * checksum calculation: (d1+2*d2+3*d3+...+9*d9) mod 11 = 0
-    e) if some characters are illegible, they are replaced by a ?
+    e) if some characters are illegible, they are replaced by ?
     f) a file contains around 500 entries
+
+
+_Kata: Bowling Game_
+
+10 pins
+each game (line of bowling) consists of 10 turns (frames)
+each frame have two deliveries of the ball
+
+strike - if you knock down all the pins on your first ball, it is called a strike. If you score a 
+strike in the first frame, then an 7 and 1 in the second frame, you would score 18 (10+7+1) for 
+the first frame, and 8 for the second frame, making a total of 26 after two frames. 
