@@ -1,7 +1,7 @@
 from bowling_game.code.game import Game
 
 
-def test_ten_frame_stopping_game():
+def test_ten_frames_stopping_game():
     roll = "x"
     game_object = Game(roll)
     for i in range(0, 11):
@@ -39,3 +39,33 @@ def test_calculate_score():
     roll = ["x", "x", "x", "x", "x", "x", "x", "x", "x"]
     game_object = Game(roll)
     print("score is", game_object.calculate_score())
+
+
+def test_frame_result_is_strike():
+    """
+    the bowler knocks down all pins in one try, and gets ten points
+    plus the sum of the next two throws
+    """
+    roll = ["x", "x", "x", "x", "x", "x", "x", "x", "x"]
+    game_object = Game(roll)
+    assert game_object.frame_result_is_strike() == 300
+
+
+def test_frame_result_is_spare():
+    """
+    the bowler knocks down all ten pins in two tries,
+    and gets ten points plus the value of the next throw
+    """
+    roll = ["x", "x", "x", "x", "x", "x", "x", "x", "x"]
+    game_object = Game(roll)
+    assert game_object.frame_result_is_spare() == 150
+
+
+def test_frame_result_is_open():
+    """
+    where in two tries the bowler knocks down less than ten pins.
+    """
+    roll = ["x", "x", "x", "x", "x", "x", "x", "x", "x"]
+    game_object = Game(roll)
+    score = game_object.frame_result_is_open()
+    assert 0 < score < 91

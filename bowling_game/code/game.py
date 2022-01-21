@@ -20,7 +20,7 @@ class Game:
             frame_over = True
         return frame_over
 
-    def generate_score(self):
+    def generate_score(self): # how many pins where knocked down
         legit_chars = ["x", "/", "-"]
         score = []
         for i in range(1, 4):
@@ -36,8 +36,36 @@ class Game:
                 score += 1
         return score
 
+    def frame_result_is_strike(self):
+        result = "strike"
+        score = self.score(result)
+        return score
+
+    def frame_result_is_spare(self):
+        result = "spare"
+        score = self.score(result)
+        return score
+
+    def frame_result_is_open(self): # continue
+        result = "open"
+        score = self.score(result)
+        return score
+
+    def generate_open_score(self):
+        open_score = random.randint(0, 91)
+        return open_score
+
+    def score(self, result):
+        if result == "strike":
+            score = 300
+        if result == "spare":
+            score = 150
+        if result == "open":
+            score = self.generate_open_score()
+        return score
+
 
 if __name__ == "__main__":
-    roll = "x"
+    roll = ["x", "x", "x", "x", "x", "x", "x", "x", "x"]
     game_object = Game(roll)
     print(game_object.return_roll())
