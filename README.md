@@ -41,9 +41,9 @@ _Kata: Bowling Game_
 1. 10 pins
 2. each game (line of bowling) consists of 10 turns (frames)
 3. each frame have two deliveries of the ball
-4. If in two tries, he fails to knock them all down, his score for that frame is the total number 
-   of pins knocked down in his two tries.
-
+4. If in two tries player fails to knock all pins down, score for that frame is the total number 
+   of pins knocked down in two tries
+5. 
 strike - if you knock down all the pins on your first ball, it is called a strike. If you score a 
 strike in the first frame, then an 7 and 1 in the second frame, you would score 18 (10+7+1) for 
 the first frame, and 8 for the second frame, making a total of 26 after two frames. 
