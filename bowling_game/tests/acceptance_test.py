@@ -1,9 +1,8 @@
-from bowling_game.code.game import Game
+from bowling_game.code.game import *
 
 
 def test_game():
-    roll = ["x", "x", "x", "x", "x", "x", "x", "x", "x"]
-    game_object = Game(roll)
-    assert game_object.return_roll() == roll
-
-
+    score, _ = game_score()
+    _, frame_count = game_score()
+    assert 0 <= score <= 300
+    assert frame_count == 10
