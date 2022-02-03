@@ -1,38 +1,29 @@
 import random
 
 
-def one_try_score(): # one try (roll)
+def one_try_score():  # one try (roll)
     number_of_pins_downed = random.randint(0, 10)
     return number_of_pins_downed
 
 
-def one_frame_score():
-    score_for_one_frame = 0 # here i keep running score
+def one_frame_score():  # one frame, two tries (rolls)
     try_one_score = one_try_score()
-    #print("number_of_pins_try_one", number_of_pins_try_one)
     try_two_score = one_try_score()
-    #print("number_of_pins_try_two", number_of_pins_try_two)
-    # # need to see if its strike
-    # if number_of_pins_try_one == 10:
-    #     print("its a strike")
-    #     # code goes here
-    # else:
-    #     number_of_pins_try_two = number_of_pins_downed_in_one_try()
-    #     if number_of_pins_try_two == 10:
-    #         print("its a spare")
-    #         # code goes here
-    # score_for_one_frame = number_of_pins_try_one + number_of_pins_try_two
-    #print("score for one frame", score_for_one_frame)
     return try_one_score, try_two_score
 
 
 def game_score():
     frame = 1
-    score = 0
-    while frame < 10: # always 10 frames
+    game_score_final = 0
+    while frame < 10:  # always 10 frames
         try_one_score, _ = one_frame_score()
         _, try_two_score = one_frame_score()
+        if try_one_score == 10:
+            print("First try", "and try score is", try_one_score)
         frame_score = try_one_score + try_two_score
-        score += frame_score
+        if frame_score == 10:
+            print("Frame is", frame, "and frame score is", frame_score)
+        game_score_final += frame_score
+        print("Game score is", game_score_final)
         frame += 1
-    return score, frame
+    return game_score_final

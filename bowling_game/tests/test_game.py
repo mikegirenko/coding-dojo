@@ -1,3 +1,6 @@
+import unittest
+from unittest.mock import patch, Mock, MagicMock
+
 from bowling_game.code.game import *
 
 
@@ -13,29 +16,30 @@ def test_score_for_one_frame():
 
 
 def test_game_score():
-    score, _ = game_score()
-    _, frame_count = game_score()
+    score = game_score()
     assert 0 <= score <= 300
-    assert frame_count == 10
 
 
 # 9- 9- 9- 9- 9- 9- 9- 9- 9- 9- (20 rolls: 10 pairs of 9 and miss) = 10 frames * 9 points = 90
 # in two tries player fails to knock all pins down
 def test_open_game():
-    # TODO use assertion not print
-    score, _ = game_score()
-    _, frame_count = game_score()
-    print("game score is", score)
-    print("frame count is", frame_count)
+    score = game_score()
     assert 0 <= score <= 300
-    assert frame_count == 10
 
 
 # 5/ 5/ 5/ 5/ 5/ 5/ 5/ 5/ 5/ 5/5 (21 rolls: 10 pairs of 5 and spare, with a final 5) =
 # 10 frames * 15 points = 150
 # TODO next
-def test_spare():
-    pass
+def test_frame_is_spare():
+    score = game_score()
+    assert 0 <= score <= 300
+
+
+@patch("bowling_game.code.game.one_frame_score")
+def test_frame_is_spare_using_mock(mocked_one_frame_score):
+    mocked_one_frame_score.return_value = (5, 5)
+    score = game_score()
+    assert 0 <= score <= 300
 
 """
 you if score a spare in the first frame, say an 6 and a 4, then got an 8 and a 1 in the second 
@@ -43,9 +47,9 @@ frame, you would score 18 (6+4+8) for the first frame, and 9 for the second fram
 total of 27 after two frames.
 """
 
-"""
-This resolved an issue when running a script locally and importing a function from under the 
-same project:
-PYTHONPATH=`pwd` python test_cases/customer/plan/all_third_parties/test_assessments_widget.py
 
-"""
+@patch("bowling_game.code.game.one_frame_score")
+def test_frame_is_strike_using_mock(mocked_one_frame_score):
+    mocked_one_frame_score.return_value = (10, 0)
+    score = game_score()
+    assert 0 <= score <= 300
