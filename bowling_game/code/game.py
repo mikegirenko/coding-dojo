@@ -17,6 +17,11 @@ def one_frame_score(frame_counter) -> int:  # number of pins downed in one frame
             frame_score = 10 + try_one_score
         else:
             frame_score = try_one_score + try_two_score
+    if frame_counter == 10:
+        if (try_one_score + try_two_score) == 10:
+            frame_score = 10 + try_one_score + try_one_score
+        if try_one_score == 10:
+            frame_score = 10 + try_one_score + try_one_score + try_one_score
     return frame_score
 
 

@@ -48,3 +48,5 @@ _Kata: Bowling Game_
 6. If on his first try in the frame player knocks down all the pins, this is called a “strike”. The 
    turn is over, and score for the frame is ten plus the simple total of the pins knocked 
    down in his next two rolls.
+7. If he gets a spare or strike in the last (tenth) frame, the bowler gets to throw one or two more bonus 
+   balls, respectively.

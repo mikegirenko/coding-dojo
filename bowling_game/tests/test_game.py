@@ -30,11 +30,25 @@ def test_game_is_all_open_frames(mocked_one_try_score):
 def test_game_is_all_spares(mocked_one_try_score):
     mocked_one_try_score.return_value = 5
     score = game_score()
-    assert score == 145
+    assert score == 150
 
 
 @patch("bowling_game.code.game.one_try_score")
 def test_game_is_all_strikes(mocked_one_try_score):
     mocked_one_try_score.return_value = 10
     score = game_score()
-    assert score == 200
+    assert score == 220
+
+
+@patch("bowling_game.code.game.one_try_score")
+def test_spare_on_last_frame(mocked_one_try_score):
+    mocked_one_try_score.return_value = 5
+    score = game_score()
+    assert score == 150
+
+
+@patch("bowling_game.code.game.one_try_score")
+def test_strike_on_last_frame(mocked_one_try_score):
+    mocked_one_try_score.return_value = 10
+    score = game_score()
+    assert score == 220
