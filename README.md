@@ -44,14 +44,7 @@ _Kata: Bowling Game_
 4. If in two tries player fails to knock all pins down, score for that frame is the total number 
    of pins knocked down in two tries
 5. If in two tries player knocks all pins down, this is called a “spare” and score for the 
-frame is ten plus the number of pins knocked down on next throw (in his next turn)
-
-strike - if you knock down all the pins on your first ball, it is called a strike. If you score a 
-strike in the first frame, then an 7 and 1 in the second frame, you would score 18 (10+7+1) for 
-the first frame, and 8 for the second frame, making a total of 26 after two frames. 
-
-
-
-
-
-
+   frame is ten plus the number of pins knocked down on next throw (in his next turn)
+6. If on his first try in the frame player knocks down all the pins, this is called a “strike”. The 
+   turn is over, and score for the frame is ten plus the simple total of the pins knocked 
+   down in his next two rolls.
