@@ -8,11 +8,13 @@ Given a positive integer N
 
 
 def fizz_buzz(positive_integer):
-    if positive_integer % 3 == 0 and positive_integer % 5 != 0:
+    if int(positive_integer) and positive_integer > 0 and positive_integer % 3 == 0 and positive_integer % 5 != 0:
         return "Fizz"
-    if positive_integer % 5 == 0 and positive_integer % 3 != 0:
+    if int(positive_integer) and positive_integer > 0 and positive_integer % 5 == 0 and positive_integer % 3 != 0:
         return "Buzz"
-    if positive_integer % 3 == 0 and positive_integer % 5 == 0:
+    if int(positive_integer) and positive_integer > 0 and positive_integer % 3 == 0 and positive_integer % 5 == 0:
         return "FizzBuzz"
-    else:
+    if int(positive_integer) and positive_integer > 0 and positive_integer % 3 != 0 and positive_integer % 5 != 0:
         return positive_integer
+    else:
+        return "Input must be positive integer"

@@ -24,3 +24,9 @@ def test_print_fizz_buzz_when_n_is_15(input_int):
 def test_print_n(input_int,expected_out):
     output = fizz_buzz(input_int)
     assert output == expected_out
+
+
+@pytest.mark.parametrize("input_int", [0.1])
+def test_non_positive_input(input_int):
+    output = fizz_buzz(input_int)
+    assert output == "Input must be positive integer"
