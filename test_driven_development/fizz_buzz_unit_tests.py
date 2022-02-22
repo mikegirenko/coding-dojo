@@ -26,7 +26,7 @@ def test_print_n(input_int,expected_out):
     assert output == expected_out
 
 
-@pytest.mark.parametrize("input_int", [0.1])
+@pytest.mark.parametrize("input_int", [0.1, -3])
 def test_non_positive_input(input_int):
     output = fizz_buzz(input_int)
     assert output == "Input must be positive integer"
