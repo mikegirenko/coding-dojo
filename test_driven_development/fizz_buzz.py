@@ -8,5 +8,5 @@ Otherwise → print N
 
 
 def fizz_buzz(positive_integer):
-    if positive_integer == 3:
+    if positive_integer % 3 == 0:
         return "Fizz"
