@@ -50,3 +50,13 @@ _Kata: Bowling Game_
    down in his next two rolls.
 7. If he gets a spare or strike in the last (tenth) frame, the bowler gets to throw one or two more bonus 
    balls, respectively.
+
+
+_Kata: Gilded Rose_
+
+1. system which updates inventory
+    * each inventory item has SellIn value (number of days left to sell this item)
+    * each inventory item has Quality value which denotes how valuable the item is
+    * at the end of each day system lowers both values for every item
+    * once the sell by date has passed, Quality degrades twice as fas
+2. add new feature to existing system which will handle new category of items
