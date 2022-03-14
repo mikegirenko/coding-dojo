@@ -1,4 +1,4 @@
-QUALITY = ("na", "very low", "low", "medium", "high")
+QUALITY = ("zero", "very low", "low", "medium", "high")
 
 
 class Inventory:
@@ -17,17 +17,20 @@ class Inventory:
     def decrease_sell_in(self):
         for item in self.inventory:
             current_sell_in = item["sell_in"]
-            print("current_sell_in", current_sell_in)
             item["sell_in"] = current_sell_in - 1
 
-    def decrease_quality(self):
+    def update_quality(self):
         for item in self.inventory:
             current_quality = item["quality"]
             current_quality_index = QUALITY.index(current_quality)
-            if self.sell_date_passed():
-                item["quality"] = QUALITY[current_quality_index - 2]
-            else:
-                item["quality"] = QUALITY[current_quality_index - 1]
+            if item["name"] == "Aged Brie":
+                item["quality"] = QUALITY[current_quality_index + 1]
+                return
+            if current_quality != "zero":
+                if self.sell_date_passed():
+                    item["quality"] = QUALITY[current_quality_index - 2]
+                else:
+                    item["quality"] = QUALITY[current_quality_index - 1]
 
     def sell_date_passed(self):
         sell_date_passed = False
@@ -35,3 +38,5 @@ class Inventory:
             if self.current_day > item["sell_in"]:
                 sell_date_passed = True
         return sell_date_passed
+
+# TODO: next is The Quality of an item is never more than 50

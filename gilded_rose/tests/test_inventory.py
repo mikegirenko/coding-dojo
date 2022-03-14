@@ -1,7 +1,8 @@
 from gilded_rose.code.inventory import Inventory, QUALITY
 
 CURRENT_INVENTORY = [{"name": "item 1", "sell_in": 3, "quality": QUALITY[4]},
-                     {"name": "item 2", "sell_in": 5, "quality": QUALITY[3]}
+                     {"name": "item 2", "sell_in": 5, "quality": QUALITY[3]},
+                     {"name": "Aged Brie", "sell_in": 3, "quality": QUALITY[2]}
                      ]
 
 
@@ -30,13 +31,13 @@ def test_system_lowers_sell_in():
 
 def test_system_lowers_quality_when_sell_date_not_passed():
     inventory_object = Inventory(2, CURRENT_INVENTORY)
-    inventory_object.decrease_quality()
+    inventory_object.update_quality()
     assert inventory_object.inventory[0]["quality"] == QUALITY[3]
 
 
 def test_system_lowers_quality_when_sell_date_passed():
     inventory_object = Inventory(4, CURRENT_INVENTORY)
-    inventory_object.decrease_quality()
+    inventory_object.update_quality()
     assert inventory_object.inventory[0]["quality"] == QUALITY[2]
 
 
@@ -48,3 +49,10 @@ def test_sell_date_passed_when_should():
 def test_sell_date_not_passed_when_should_not():
     inventory_object = Inventory(2, CURRENT_INVENTORY)
     assert not inventory_object.sell_date_passed()
+
+
+def test_aged_brie_increases_in_quality_the_older_it_get():
+    inventory_object = Inventory(2, CURRENT_INVENTORY)
+    current_quality = inventory_object.return_one_inventory_item_by_name("Aged Brie")["quality"]
+    inventory_object.update_quality()
+    assert inventory_object.return_one_inventory_item_by_name("Aged Brie")["quality"] == QUALITY[3]
