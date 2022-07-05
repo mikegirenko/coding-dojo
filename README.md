@@ -55,13 +55,17 @@ _Kata: Bowling Game_
 _Kata: Gilded Rose_
 
 1. system which updates inventory
-    * each inventory item has SellIn value (number of days left to sell this item)
+    * each inventory item has SellIn value which is number of days we have to sell the item
     * each inventory item has Quality value which denotes how valuable the item is
     * at the end of each day system lowers both values for every item
     * once the sell by date has passed, Quality degrades twice as fast
-    * the Quality of an item is never negative # NEXT
+    * the Quality of an item is never negative
     * “Aged Brie” actually increases in Quality the older it gets
     * the Quality of an item is never more than 50
+    * “Sulfuras”, being a legendary item, never has to be sold or decreases in Quality
 2. add new feature to existing system which will handle new category of items
+
+Quality needs to be a number
+At the end of each day our system lowers both values for every item. Create "one_day_updates" function?
 
 interesting.... Write a requirement. Write a test for this requirement. Then write code
