@@ -85,3 +85,24 @@ def test_quality_of_an_item_is_never_more_than_fifty():
     inventory_object = Inventory(2, current_inventory)
     inventory_object.update_quality()
     assert inventory_object.inventory[0]["quality"] == 50
+
+
+def test_sulfuras_never_has_to_be_sold():
+    current_inventory = [{"name": "sulfuras", "sell_in": 0, "quality": 5}]
+    inventory_object = Inventory(1, current_inventory)
+    inventory_object.decrease_sell_in()
+    assert inventory_object.inventory[0]["sell_in"] == 0
+
+
+def test_sulfuras_never_decreases_in_quality():
+    current_inventory = [{"name": "sulfuras", "sell_in": 1, "quality": 5}]
+    inventory_object = Inventory(1, current_inventory)
+    inventory_object.update_quality()
+    assert inventory_object.inventory[0]["quality"] == 5
+
+
+def test_system_lowers_conjured_item_quality_twice_faster():
+    current_inventory = [{"name": "Conjured", "sell_in": 2, "quality": 4}]
+    inventory_object = Inventory(1, current_inventory)
+    inventory_object.update_quality()
+    assert inventory_object.inventory[0]["quality"] == 2

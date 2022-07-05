@@ -64,8 +64,4 @@ _Kata: Gilded Rose_
     * the Quality of an item is never more than 50
     * “Sulfuras”, being a legendary item, never has to be sold or decreases in Quality
 2. add new feature to existing system which will handle new category of items
-
-Quality needs to be a number
-At the end of each day our system lowers both values for every item. Create "one_day_updates" function?
-
-interesting.... Write a requirement. Write a test for this requirement. Then write code
+    * “Conjured” items degrade in Quality twice as fast as normal items

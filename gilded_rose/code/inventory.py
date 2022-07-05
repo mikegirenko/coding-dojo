@@ -16,8 +16,9 @@ class Inventory:
         day_counter = 1
         while day_counter <= self.current_day:
             for item in self.inventory:
-                current_sell_in = item["sell_in"]
-                item["sell_in"] = current_sell_in - 1
+                if item["name"] != "sulfuras":
+                    current_sell_in = item["sell_in"]
+                    item["sell_in"] = current_sell_in - 1
             day_counter += 1
 
     def update_quality(self):
@@ -25,23 +26,26 @@ class Inventory:
         day_counter = 1
         while day_counter <= self.current_day:
             for item in self.inventory:
-                current_quality = item["quality"]
-                if current_quality == 50:
-                    return
-                if item["name"] == "Aged Brie":
-                    item["quality"] = current_quality + 1
-                    return
-                if current_quality != 0:
-                    if self.sell_date_passed():
-                        if current_quality == 0 or current_quality == 1:
-                            item["quality"] = 0
-                        else:
-                            item["quality"] = current_quality - 2
-                    if not self.sell_date_passed():
-                        if current_quality == 0 or current_quality == 1:
-                            item["quality"] = 0
-                        else:
-                            item["quality"] = current_quality - 1
+                if item["name"] != "sulfuras":
+                    current_quality = item["quality"]
+                    if current_quality == 50:
+                        return
+                    if item["name"] == "Aged Brie":
+                        item["quality"] = current_quality + 1
+                        return
+                    if current_quality != 0:
+                        if self.sell_date_passed():
+                            if current_quality == 0 or current_quality == 1:
+                                item["quality"] = 0
+                            else:
+                                item["quality"] = current_quality - 2
+                        if not self.sell_date_passed():
+                            if current_quality == 0 or current_quality == 1:
+                                item["quality"] = 0
+                            if item["name"] == "Conjured":
+                                item["quality"] = current_quality - 2
+                            else:
+                                item["quality"] = current_quality - 1
             day_counter += 1
 
     def sell_date_passed(self):
@@ -50,3 +54,7 @@ class Inventory:
             if self.current_day > item["sell_in"]:
                 sell_date_passed = True
         return sell_date_passed
+
+    def update_inventory(self):
+        self.decrease_sell_in()
+        self.update_quality()
