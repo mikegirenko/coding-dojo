@@ -59,7 +59,9 @@ _Kata: Gilded Rose_
     * each inventory item has Quality value which denotes how valuable the item is
     * at the end of each day system lowers both values for every item
     * once the sell by date has passed, Quality degrades twice as fast
-    * the Quality of an item is never negative
+    * the Quality of an item is never negative # NEXT
     * “Aged Brie” actually increases in Quality the older it gets
     * the Quality of an item is never more than 50
 2. add new feature to existing system which will handle new category of items
+
+interesting.... Write a requirement. Write a test for this requirement. Then write code

@@ -28,7 +28,10 @@ class Inventory:
                 return
             if current_quality != "zero":
                 if self.sell_date_passed():
-                    item["quality"] = QUALITY[current_quality_index - 2]
+                    if current_quality == "zero" or current_quality == "very low":
+                        item["quality"] = QUALITY[0]
+                    else:
+                        item["quality"] = QUALITY[current_quality_index - 2]
                 else:
                     item["quality"] = QUALITY[current_quality_index - 1]
 
@@ -38,5 +41,3 @@ class Inventory:
             if self.current_day > item["sell_in"]:
                 sell_date_passed = True
         return sell_date_passed
-
-# TODO: next is The Quality of an item is never more than 50
