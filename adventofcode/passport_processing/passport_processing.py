@@ -1,4 +1,4 @@
-from typing import List, Dict
+from typing import List
 
 required_fields = ["byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid", "cid"]
 
@@ -13,12 +13,12 @@ def read_file() -> List[str]:
 
 # this is to remove \n from each password which has a new line
 def remove_n_from_password(list_of_passwords) -> List[str]:
-    a_clean_list_of_passwords = []
+    clean_list_of_passwords = []
     for i in list_of_passwords:
         i = i.replace("\n", " ")
-        a_clean_list_of_passwords.append(i)
+        clean_list_of_passwords.append(i)
 
-    return a_clean_list_of_passwords
+    return clean_list_of_passwords
 
 
 def detect_required_fields_in_a_passport(one_passport) -> bool:
@@ -35,7 +35,7 @@ def detect_required_fields_in_a_passport(one_passport) -> bool:
     return has_required_fields
 
 
-def detect_which_passports_have_all_required_fields(file_with_passports):
+def count_valid__passports_(file_with_passports):
     number_of_valid_passports = 0
     for passport in file_with_passports:
         if detect_required_fields_in_a_passport(passport):
