@@ -35,7 +35,7 @@ def detect_required_fields_in_a_passport(one_passport) -> bool:
     return has_required_fields
 
 
-def count_valid__passports_(file_with_passports):
+def count_valid__passports_(file_with_passports) -> int:
     number_of_valid_passports = 0
     for passport in file_with_passports:
         if detect_required_fields_in_a_passport(passport):
