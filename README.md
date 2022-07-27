@@ -69,4 +69,5 @@ _Kata: Gilded Rose_
 
 _Kata: Leap Years_
 
-1. 
+1. All years not divisible by 4 are NOT leap years (e.g. 2017, 2018, 2019)
+2. All years divisible by 4 but not by 100 ARE leap years (e.g., 2008, 2012, 2016)
