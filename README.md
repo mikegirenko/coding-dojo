@@ -65,3 +65,8 @@ _Kata: Gilded Rose_
     * “Sulfuras”, being a legendary item, never has to be sold or decreases in Quality
 2. add new feature to existing system which will handle new category of items
     * “Conjured” items degrade in Quality twice as fast as normal items
+
+
+_Kata: Leap Years_
+
+1. 
