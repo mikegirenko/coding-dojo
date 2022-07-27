@@ -9,5 +9,4 @@ def test_year_is_not_leap_year(year):
 
 @pytest.mark.parametrize("year", [2008, 2012, 2016])
 def test_year_is_leap_year(year):
-    year = 2000
     assert determine_if_year_is_leap_year(year)
