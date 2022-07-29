@@ -74,3 +74,8 @@ _Kata: Leap Years_
    years, NOR will 2100 be a leap year),
 3. All years divisible by 4 but not by 100 ARE leap years (e.g., 2008, 2012, 2016),
 4. All years not divisible by 4 are NOT leap years (e.g. 2017, 2018, 2019).
+
+
+_Kata: Minesweeper_
+
+1. The goal of the game is to find all the mines within an MxN field
