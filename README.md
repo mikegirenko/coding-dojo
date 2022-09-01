@@ -79,3 +79,12 @@ _Kata: Leap Years_
 _Kata: Minesweeper_
 
 1. The goal of the game is to find all the mines within an MxN field
+
+
+_Kata: Monty Hall_
+
+
+_Kata: Phone Numbers_
+
+1. Given a list of phone numbers, determine if it is consistent
+2. In a consistent phone list no number is a prefix of another
