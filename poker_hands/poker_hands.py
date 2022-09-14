@@ -11,27 +11,43 @@ def read_input_data(a_file) -> List[str]:
     return list_of_data
 
 
-def prepare_cards_for_comparing(two_pairs_of_cards) -> Tuple[Any, Any]:
-    two_pairs_split = two_pairs_of_cards.split("  ")
+def prepare_hands_for_comparing(two_hands_of_cards) -> Tuple[Any, Any]:
+    two_pairs_split = two_hands_of_cards.split("  ")
     first_pair = two_pairs_split[0]
     second_pair = two_pairs_split[1]
+    first_player = first_pair[:5]
+    second_player = second_pair[:5]
     first_pair_just_cards_list = first_pair[7:]
     second_pair_just_cards = second_pair[7:]
-    cards_one = first_pair_just_cards_list.split(" ")
-    cards_two = second_pair_just_cards.split(" ")
+    hand_of_cards_one = first_pair_just_cards_list.split(" ")
+    hand_of_cards_two = second_pair_just_cards.split(" ")
 
-    return cards_one, cards_two
+    return first_player, hand_of_cards_one, second_player, hand_of_cards_two
 
 
 # Compare TWO pairs of poker hands to indicate which has higher rank
-def compare_two_pairs(pair_one, pair_two):
-    result = ""
-    first_pair_just_cards_list = pair_one
-    second_pair_just_cards_list = pair_two
-    for i in range(len(first_pair_just_cards_list)):
-        if first_pair_just_cards_list[i] != second_pair_just_cards_list[i]:
-            result = "No Tie" # remove
-            return
+def compare_two_hands(player_one, hand_one, player_two, hand_two) -> str:
+    game_result = ""
+    winner = ""
+    winning_card = ""
+    hand_one_values = []
+    hand_two_values = []
+    for card in hand_one:
+        hand_one_values.append(card[:1])
+    for card in hand_two:
+        hand_two_values.append(card[:1])
+    first_hand_just_cards_list = hand_one
+    second_hand_just_cards_list = hand_two
+    for i in range(len(first_hand_just_cards_list)):
+        if first_hand_just_cards_list[i] != second_hand_just_cards_list[i]:
+            if hand_one_values[i] > hand_two_values[i]:
+                winner = player_one
+                winning_card = str(hand_one_values[i])
+            if hand_one_values[i] < hand_two_values[i]:
+                winner = player_two
+                winning_card = str(hand_one_values[i])
+            game_result = winner + " wins. - with high card: " + winning_card
         else:
-            result = "Tie"
-    return result
+            game_result = "Tie"
+
+    return game_result
