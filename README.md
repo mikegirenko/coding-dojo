@@ -88,3 +88,9 @@ _Kata: Phone Numbers_
 
 1. Given a list of phone numbers, determine if it is consistent
 2. In a consistent phone list no number is a prefix of another
+
+
+_Kata: Poker Hands_
+
+1. Compare pairs of poker hands to indicate which has higher rank
+2. 
