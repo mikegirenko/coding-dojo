@@ -37,36 +37,47 @@ def compare_two_hands(player_one, hand_one, player_two, hand_two) -> str:
     first_hand_just_cards_list = hand_one
     second_hand_just_cards_list = hand_two
 
-    if pair(hand_one_values) and pair(hand_two_values):
-        hand_one_pair = pair(hand_one_values)
-        hand_two_pair = pair(hand_two_values)
-        if hand_one_pair > hand_two_pair:
-            winner = player_one
-            winning_card = hand_one_pair[0]
-            game_result = winner + " wins. - with pair: " + winning_card
-        else:
-            winner = player_two
-            winning_card = hand_two_pair[0]
-            game_result = winner + " wins. - with pair: " + winning_card
-
-    if not pair(hand_one_values) or not pair(hand_two_values):
+    if find_pair(hand_one_values) and find_pair(hand_two_values):   # Pairs
+        hand_one_pair = find_pair(hand_one_values)  # [2, 7]
+        hand_two_pair = find_pair(hand_two_values)  # [3. 4]
+        if len(hand_one_pair) == 1 and len(hand_two_pair) == 1:     # One Pair
+            if hand_one_pair > hand_two_pair:
+                winner = player_one
+                winning_card = hand_one_pair[0]
+                game_result = winner + " wins. - with pair: " + winning_card
+            else:
+                winner = player_two
+                winning_card = hand_two_pair[0]
+                game_result = winner + " wins. - with pair: " + winning_card
+        else:                                                       # Two Pairs
+            hand_one_pair_max = max(hand_one_pair)
+            hand_two_pair_max = max(hand_two_pair)
+            if hand_one_pair_max > hand_two_pair_max:
+                winner = player_one
+                winning_card = hand_one_pair_max
+                game_result = winner + " wins. - with pair: " + winning_card
+            else:
+                winner = player_two
+                winning_card = hand_two_pair_max
+                game_result = winner + " wins. - with pair: " + winning_card
+    if not find_pair(hand_one_values) or not find_pair(hand_two_values):
         for i in range(len(first_hand_just_cards_list)):
             if first_hand_just_cards_list[i] != second_hand_just_cards_list[i]:  # Not a Tie
-                if hand_one_values[i] > hand_two_values[i]:  # High Card
+                if hand_one_values[i] > hand_two_values[i]:         # High Card
                     winner = player_one
                     winning_card = str(hand_one_values[i])
                     game_result = winner + " wins. - with high card: " + winning_card
-                if hand_one_values[i] < hand_two_values[i]:  # High Card
+                if hand_one_values[i] < hand_two_values[i]:         # High Card
                     winner = player_two
                     winning_card = str(hand_one_values[i])
                     game_result = winner + " wins. - with high card: " + winning_card
             else:
-                game_result = "Tie"  # Tie
+                game_result = "Tie"                                 # Tie
 
     return game_result
 
 
-def pair(hand_of_cards): # find if hand has pair
+def find_pair(hand_of_cards):  # find if hand has a pair
     duplicates = []
     seen = set()
     for card in hand_of_cards:
@@ -77,4 +88,4 @@ def pair(hand_of_cards): # find if hand has pair
 
     return duplicates
 
- # TODO continue with two Pairs logic
+# TODO continue with Three of a Kind logic
