@@ -36,10 +36,11 @@ def compare_two_hands(player_one, hand_one, player_two, hand_two) -> str:
         hand_two_values.append(card[:1])
     first_hand_just_cards_list = hand_one
     second_hand_just_cards_list = hand_two
-
     if find_repeated_card(hand_one_values) and find_repeated_card(hand_two_values):   # Pairs
         hand_one_pair = find_repeated_card(hand_one_values)
         hand_two_pair = find_repeated_card(hand_two_values)
+        hand_one_pair_max = max(hand_one_pair)
+        hand_two_pair_max = max(hand_two_pair)
         if len(hand_one_pair) == 2 and len(hand_two_pair) == 2:     # One Pair
             if hand_one_pair > hand_two_pair:
                 winner = player_one
@@ -50,8 +51,6 @@ def compare_two_hands(player_one, hand_one, player_two, hand_two) -> str:
                 winning_card = hand_two_pair[0]
                 game_result = winner + " wins. - with pair: " + winning_card
         if len(hand_one_pair) == 4 and len(hand_two_pair) == 4:     # Two Pairs
-            hand_one_pair_max = max(hand_one_pair)
-            hand_two_pair_max = max(hand_two_pair)
             if hand_one_pair_max > hand_two_pair_max:
                 winner = player_one
                 winning_card = hand_one_pair_max
@@ -61,8 +60,6 @@ def compare_two_hands(player_one, hand_one, player_two, hand_two) -> str:
                 winning_card = hand_two_pair_max
                 game_result = winner + " wins. - with pair: " + winning_card
         if len(hand_one_pair) == 3 and len(hand_two_pair) == 3:     # Three of a kind
-            hand_one_pair_max = max(hand_one_pair)
-            hand_two_pair_max = max(hand_two_pair)
             if hand_one_pair_max > hand_two_pair_max:
                 winner = player_one
                 winning_card = hand_one_pair_max
@@ -71,19 +68,29 @@ def compare_two_hands(player_one, hand_one, player_two, hand_two) -> str:
                 winner = player_two
                 winning_card = hand_two_pair_max
                 game_result = winner + " wins. - with pair: " + winning_card
+            # Straight
+    if find_if_consecutive(hand_one_values) and find_if_consecutive(hand_two_values):
+        # TODO this is failing two tests, tie and highest card!
+        if max(hand_one_values) > max(hand_two_values):
+            winner = player_one
+            game_result = winner + " wins. - by higher straight"
+        else:
+            winner = player_two
+            game_result = winner + " wins. - by higher straight"
     if not find_repeated_card(hand_one_values) or not find_repeated_card(hand_two_values):
-        for i in range(len(first_hand_just_cards_list)):
-            if first_hand_just_cards_list[i] != second_hand_just_cards_list[i]:  # Not a Tie
-                if hand_one_values[i] > hand_two_values[i]:         # High Card
-                    winner = player_one
-                    winning_card = str(hand_one_values[i])
-                    game_result = winner + " wins. - with high card: " + winning_card
-                if hand_one_values[i] < hand_two_values[i]:         # High Card
-                    winner = player_two
-                    winning_card = str(hand_one_values[i])
-                    game_result = winner + " wins. - with high card: " + winning_card
-            else:
-                game_result = "Tie"                                 # Tie
+        if not find_if_consecutive(hand_one_values) or not find_if_consecutive(hand_two_values):
+            for i in range(len(first_hand_just_cards_list)):
+                if first_hand_just_cards_list[i] != second_hand_just_cards_list[i]:  # Not a Tie
+                    if hand_one_values[i] > hand_two_values[i]:         # High Card
+                        winner = player_one
+                        winning_card = str(hand_one_values[i])
+                        game_result = winner + " wins. - with high card: " + winning_card
+                    if hand_one_values[i] < hand_two_values[i]:         # High Card
+                        winner = player_two
+                        winning_card = str(hand_one_values[i])
+                        game_result = winner + " wins. - with high card: " + winning_card
+                else:
+                    game_result = "Tie"                                 # Tie
 
     return game_result
 
@@ -93,4 +100,20 @@ def find_repeated_card(hand_of_cards) -> List:
 
     return repeated_cards
 
-# TODO continue with Three of a Kind logic
+
+def find_if_consecutive(hand_of_cards):
+    consecutive = False
+    i = 0
+    while i < len(hand_of_cards) - 1:
+        first = int(hand_of_cards[i])
+        second = int(hand_of_cards[i + 1])
+        if first + 1 == second:
+            consecutive = True
+        else:
+            return consecutive
+        i += 1
+
+    return consecutive
+
+
+# TODO continue with Straight logic
