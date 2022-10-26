@@ -102,6 +102,13 @@ def compare_two_hands(player_one, hand_one, player_two, hand_two) -> str:
     if find_four_of_a_kind(hand_two_values):
         winner = player_two
         game_result = winner + " wins. - by four of a kind"
+    # Straight flash
+    if find_straight_flash(first_hand_just_cards_list):
+        winner = player_one
+        game_result = winner + " wins. - by straight flash"
+    if find_straight_flash(second_hand_just_cards_list):
+        winner = player_two
+        game_result = winner + " wins. - by straight flash"
     if not find_repeated_card(hand_one_values) or not find_repeated_card(hand_two_values):
         if not find_if_consecutive(hand_one_values) or not find_if_consecutive(hand_two_values):
             if not len(set(hand_one_suits)) == 1:
@@ -165,4 +172,46 @@ def find_four_of_a_kind(hand_of_cards):
     return four_of_a_kind
 
 
-# TODO continue with Straight flush logic
+def find_straight_flash(hand_of_cards):
+    straight_flash = False
+    hand_values = []
+    for card in hand_of_cards:
+        hand_values.append(card[:1])
+    hand_suits = []
+    for card in hand_of_cards:
+        hand_suits.append(card[-1])
+    if find_if_consecutive(hand_values) and len(set(hand_suits)) == 1:
+        straight_flash = True
+
+    return straight_flash
+
+
+if __name__ == "__main__":
+
+    def highest_card_wins():
+        two_hands = "Black: 2H 3D 5S 9C KD  White: 2C 3H 4S 8C AH"
+        player_one, hand_one, _, _ = prepare_hands_for_comparing(two_hands)
+        _, _, player_two, hand_two = prepare_hands_for_comparing(two_hands)
+
+        return compare_two_hands(player_one, hand_one, player_two, hand_two)
+
+
+    def tie():
+        two_hands = "Black: 2H 3D 5S 9C KD  White: 2D 3H 5C 9S KH"
+        player_one, hand_one, _, _ = prepare_hands_for_comparing(two_hands)
+        _, _, player_two, hand_two = prepare_hands_for_comparing(two_hands)
+
+        return compare_two_hands(player_one, hand_one, player_two, hand_two)
+
+
+    def full_house_wins():
+        two_hands = "Black: 2H 4S 4C 2D 4H  White: 2S 8S AS QS 3S"
+        player_one, hand_one, _, _ = prepare_hands_for_comparing(two_hands)
+        _, _, player_two, hand_two = prepare_hands_for_comparing(two_hands)
+
+        return compare_two_hands(player_one, hand_one, player_two, hand_two)
+
+
+    print(highest_card_wins())
+    print(tie())
+    print(full_house_wins())

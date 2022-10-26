@@ -1,6 +1,6 @@
 from poker_hands.poker_hands import read_input_data, INPUT_FILE, compare_two_hands, \
     prepare_hands_for_comparing, find_repeated_card, find_if_consecutive, find_full_house, \
-    find_four_of_a_kind
+    find_four_of_a_kind, find_straight_flash
 
 
 def test_input_reading():
@@ -150,3 +150,39 @@ def test_four_of_a_kind():
     hand = [7, 7, 7, 10, 7]
 
     assert find_four_of_a_kind(hand)
+
+
+def test_compare_hands_when_straight_flash_wins():
+    two_hands = "Black: 5D 6D 7D 8D 9D  White: 2C 3H 4S 5C 6H"  # B wins by straight flash
+    player_one, hand_one, _, _ = prepare_hands_for_comparing(two_hands)
+    _, _, player_two, hand_two = prepare_hands_for_comparing(two_hands)
+
+    assert compare_two_hands(player_one, hand_one, player_two, hand_two) == \
+           "Black wins. - by straight flash"
+
+
+def test_compare_hands_when_straight_flash_wins_again():
+    two_hands = "Black: 2C 3H 4S 5C 6H  White: 5D 6D 7D 8D 9D"  # W wins by straight flash
+    player_one, hand_one, _, _ = prepare_hands_for_comparing(two_hands)
+    _, _, player_two, hand_two = prepare_hands_for_comparing(two_hands)
+
+    assert compare_two_hands(player_one, hand_one, player_two, hand_two) == \
+           "White wins. - by straight flash"
+
+
+def test_straight_flash_when_flash():
+    hand = ["2D", "3D", "4D", "5D", "6D"]
+
+    assert find_straight_flash(hand)
+
+
+def test_straight_flash_when_not_flash():
+    hand = ["8D", "3D", "4D", "8D", "6D"]
+
+    assert not find_straight_flash(hand)
+
+
+def test_straight_flash_when_also_not_flash():
+    hand = ["2D", "3D", "4K", "5D", "6D"]
+
+    assert not find_straight_flash(hand)
