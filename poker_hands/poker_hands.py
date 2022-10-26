@@ -70,7 +70,6 @@ def compare_two_hands(player_one, hand_one, player_two, hand_two) -> str:
                 game_result = winner + " wins. - with pair: " + winning_card
             # Straight
     if find_if_consecutive(hand_one_values) and find_if_consecutive(hand_two_values):
-        # TODO this is failing two tests, tie and highest card!
         if max(hand_one_values) > max(hand_two_values):
             winner = player_one
             game_result = winner + " wins. - by higher straight"
@@ -116,4 +115,4 @@ def find_if_consecutive(hand_of_cards):
     return consecutive
 
 
-# TODO continue with Straight logic
+# TODO continue with Flush logic

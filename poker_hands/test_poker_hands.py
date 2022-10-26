@@ -15,7 +15,7 @@ def test_prepare_cards_for_comparing():
 
 
 def test_compare_hands_when_tie():
-    two_hands = "Black: 2H 3D 5S 9C KD  White: 2H 3D 5S 9C KD"
+    two_hands = "Black: 1H 3D 5S 9C KD  White: 1H 3D 5S 9C KD"
     player_one, hand_one, _, _ = prepare_hands_for_comparing(two_hands)
     _, _, player_two, hand_two = prepare_hands_for_comparing(two_hands)
 
@@ -23,7 +23,7 @@ def test_compare_hands_when_tie():
 
 
 def test_compare_hands_when_highest_card_wins():
-    two_hands = "Black: 2H 3D 5S 9C KD  White: 2C 3H 5S 8C KH"
+    two_hands = "Black: 1H 3D 5S 9C KD  White: 1C 3H 5S 8C KH"
     player_one, hand_one, _, _ = prepare_hands_for_comparing(two_hands)
     _, _, player_two, hand_two = prepare_hands_for_comparing(two_hands)
 
@@ -110,4 +110,3 @@ def test_hand_consecutive_what():
     consecutive = find_if_consecutive(hand)
 
     assert consecutive
-two_hands = "Black: 2H 3D 5S 9C KD  White: 2H 3D 5S 9C KD"
