@@ -1,5 +1,6 @@
 from poker_hands.poker_hands import read_input_data, INPUT_FILE, compare_two_hands, \
-    prepare_hands_for_comparing, find_repeated_card, find_if_consecutive, find_full_house
+    prepare_hands_for_comparing, find_repeated_card, find_if_consecutive, find_full_house, \
+    find_four_of_a_kind
 
 
 def test_input_reading():
@@ -132,4 +133,20 @@ def test_compare_hands_when_full_house_wins():
 
 def test_find_full_house():
     hand = [1, 10, 1, 10, 1]
+
     assert find_full_house(hand)
+
+
+def test_compare_hands_when_four_of_a_kind_win():
+    two_hands = "Black: 7D 7H 7C 9H 7H  White: 2C 3H 4S 5C 6H"  # B wins by four of a kind
+    player_one, hand_one, _, _ = prepare_hands_for_comparing(two_hands)
+    _, _, player_two, hand_two = prepare_hands_for_comparing(two_hands)
+
+    assert compare_two_hands(player_one, hand_one, player_two, hand_two) == \
+           "Black wins. - by four of a kind"
+
+
+def test_four_of_a_kind():
+    hand = [7, 7, 7, 10, 7]
+
+    assert find_four_of_a_kind(hand)

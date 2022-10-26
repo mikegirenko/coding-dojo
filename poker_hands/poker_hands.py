@@ -95,22 +95,30 @@ def compare_two_hands(player_one, hand_one, player_two, hand_two) -> str:
     if find_full_house(hand_two_values):
         winner = player_two
         game_result = winner + " wins. - by full house"
+    # Four of a Kind
+    if find_four_of_a_kind(hand_one_values):
+        winner = player_one
+        game_result = winner + " wins. - by four of a kind"
+    if find_four_of_a_kind(hand_two_values):
+        winner = player_two
+        game_result = winner + " wins. - by four of a kind"
     if not find_repeated_card(hand_one_values) or not find_repeated_card(hand_two_values):
         if not find_if_consecutive(hand_one_values) or not find_if_consecutive(hand_two_values):
             if not len(set(hand_one_suits)) == 1:
-                if not find_full_house(hand_one_values):
-                    for i in range(len(first_hand_just_cards_list)):
-                        if first_hand_just_cards_list[i] != second_hand_just_cards_list[i]:  # Not a Tie
-                            if hand_one_values[i] > hand_two_values[i]:         # High Card
-                                winner = player_one
-                                winning_card = str(hand_one_values[i])
-                                game_result = winner + " wins. - with high card: " + winning_card
-                            if hand_one_values[i] < hand_two_values[i]:         # High Card
-                                winner = player_two
-                                winning_card = str(hand_one_values[i])
-                                game_result = winner + " wins. - with high card: " + winning_card
-                        else:
-                            game_result = "Tie"                                 # Tie
+                if not find_four_of_a_kind(hand_one_values):
+                    if not find_full_house(hand_one_values):
+                        for i in range(len(first_hand_just_cards_list)):
+                            if first_hand_just_cards_list[i] != second_hand_just_cards_list[i]:  # Not a Tie
+                                if hand_one_values[i] > hand_two_values[i]:         # High Card
+                                    winner = player_one
+                                    winning_card = str(hand_one_values[i])
+                                    game_result = winner + " wins. - with high card: " + winning_card
+                                if hand_one_values[i] < hand_two_values[i]:         # High Card
+                                    winner = player_two
+                                    winning_card = str(hand_one_values[i])
+                                    game_result = winner + " wins. - with high card: " + winning_card
+                            else:
+                                game_result = "Tie"                                 # Tie
 
     return game_result
 
@@ -146,4 +154,15 @@ def find_full_house(hand_of_cards):
 
     return full_house
 
-# TODO continue with Four of a Kind logic
+
+def find_four_of_a_kind(hand_of_cards):
+    four_of_a_kind = False
+    uniques = set(hand_of_cards)
+    list_of_uniques = list(uniques)
+    if hand_of_cards.count(list_of_uniques[0]) == 4 or hand_of_cards.count(list_of_uniques[1]) == 4:
+        four_of_a_kind = True
+
+    return four_of_a_kind
+
+
+# TODO continue with Straight flush logic
