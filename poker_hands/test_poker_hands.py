@@ -1,5 +1,5 @@
 from poker_hands.poker_hands import read_input_data, INPUT_FILE, compare_two_hands, \
-    prepare_hands_for_comparing, find_repeated_card, find_if_consecutive
+    prepare_hands_for_comparing, find_repeated_card, find_if_consecutive, find_full_house
 
 
 def test_input_reading():
@@ -110,3 +110,26 @@ def test_hand_consecutive_what():
     consecutive = find_if_consecutive(hand)
 
     assert consecutive
+
+
+def test_compare_hands_when_flash_wins():
+    two_hands = "Black: 1H 6H 8H 10H KH  White: 2C 3H 4S 5C 6H"  # B wins by flash
+    player_one, hand_one, _, _ = prepare_hands_for_comparing(two_hands)
+    _, _, player_two, hand_two = prepare_hands_for_comparing(two_hands)
+
+    assert compare_two_hands(player_one, hand_one, player_two, hand_two) == \
+           "Black wins. - by flash"
+
+
+def test_compare_hands_when_full_house_wins():
+    two_hands = "Black: 1D 9H 1C 9H 1H  White: 2C 3H 4S 5C 6H"  # B wins by full house
+    player_one, hand_one, _, _ = prepare_hands_for_comparing(two_hands)
+    _, _, player_two, hand_two = prepare_hands_for_comparing(two_hands)
+
+    assert compare_two_hands(player_one, hand_one, player_two, hand_two) == \
+           "Black wins. - by full house"
+
+
+def test_find_full_house():
+    hand = [1, 10, 1, 10, 1]
+    assert find_full_house(hand)
