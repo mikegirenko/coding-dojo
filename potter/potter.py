@@ -20,3 +20,6 @@ def calculate_price(basket):
             basket_cost = (single_book_price * 2) - discount
 
     return basket_cost
+
+
+# TODO next - If you buy 3 different books, you get a 10% discount.
