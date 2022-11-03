@@ -97,4 +97,6 @@ _Kata: Poker Hands_
 
 _Kata: Potter_
 
-1. TBD
+1. Calculate the price of any conceivable shopping basket, 
+giving as big a discount as possible.
+2. 
