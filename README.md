@@ -93,4 +93,8 @@ _Kata: Phone Numbers_
 _Kata: Poker Hands_
 
 1. Compare pairs of poker hands to indicate which has higher rank
-2. 
+
+
+_Kata: Potter_
+
+1. TBD
