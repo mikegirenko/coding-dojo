@@ -58,4 +58,5 @@ def calculate_price(basket):
         if len(set(basket)) == 5:  # 25% discount
             discount = ((single_book_price * 5) * 25) / 100
             basket_cost = ((single_book_price * 5) - discount)
+
     return basket_cost
