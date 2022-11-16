@@ -98,3 +98,8 @@ _Kata: Poker Hands_
 _Kata: Potter_
 
 1. Calculate the price of any conceivable shopping basket, giving as big a discount as possible.
+
+
+_Kata: Prime Factors_
+
+1. Factorize a positive integer number into the prime factors.
