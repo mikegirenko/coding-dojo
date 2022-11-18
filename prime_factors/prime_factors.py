@@ -16,14 +16,19 @@ def find_prime_factors(input) -> list:
         for i in range(1, input + 1):
             if find_prime_number(i):
                 prime_numbers.append(i)
-        print("prime_numbers", prime_numbers)
-        # i = 2
-        # while i <= len(prime_numbers):
-        #     if input % prime_numbers[i] == 2:
-        #         prime_factors.append(prime_numbers[i])
-        # print("prime factors")
+    print("prime_numbers", prime_numbers)
+    if prime_numbers[0] == 0:
+        prime_factors.append(0)
+    if prime_numbers[0] != 0 and len(prime_numbers) == 1:
+        if prime_numbers[0] == 2 and len(prime_numbers) == 1:
+            prime_factors.append(2)
+    if len(prime_numbers) > 1:
+        for m in prime_numbers:
+            if input / m == 1:
+                prime_factors.append(m)
+    print("prime factors", prime_factors)
 
-    return prime_numbers
+    return prime_factors
 
 
 def find_prime_number(number):
