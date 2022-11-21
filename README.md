@@ -103,3 +103,8 @@ _Kata: Potter_
 _Kata: Prime Factors_
 
 1. Factorize a positive integer number into the prime factors.
+
+
+_Kata: Racing Car Theme_
+
+1. Write unit tests
