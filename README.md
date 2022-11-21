@@ -113,3 +113,8 @@ _Kata: Racing Car Theme_
 _Kata: Text Converter_
 
 1. Write unit tests
+
+
+_Kata: Turn Ticket Dispenser_
+
+1. Write unit tests
