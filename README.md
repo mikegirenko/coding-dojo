@@ -108,3 +108,8 @@ _Kata: Prime Factors_
 _Kata: Racing Car Theme_
 
 1. Write unit tests
+
+
+_Kata: Text Converter_
+
+1. Write unit tests
