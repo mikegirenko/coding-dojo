@@ -12,30 +12,12 @@ def test_find_prime_number():
 
 def test_find_prime_factors():
     prime_factors = find_prime_factors(0)
-    assert prime_factors[0] == 0  # its a list
+    assert prime_factors[0] == 0
     prime_factors = find_prime_factors(1)
     assert prime_factors[0] == 0
     prime_factors = find_prime_factors(2)
     assert prime_factors[0] == 2
     prime_factors = find_prime_factors(3)
     assert prime_factors[0] == 3
-
-    # prime_factors = find_prime_factors(4)
-    # assert prime_factors[0] == 2
-    # assert prime_factors[1] == 3
-    # prime_factors = find_prime_factors(6)
-    # assert prime_factors[0] == 2
-    # assert prime_factors[1] == 3
-    # assert prime_factors[2] == 5
-    # prime_factors = find_prime_factors(9)
-    # assert prime_factors[0] == 2
-    # assert prime_factors[1] == 3
-    # assert prime_factors[2] == 5
-    # assert prime_factors[3] == 7
-    # prime_factors = find_prime_factors(15)
-    # assert prime_factors[0] == 2
-    # assert prime_factors[1] == 3
-    # assert prime_factors[2] == 5
-    # assert prime_factors[3] == 7
-    # assert prime_factors[4] == 11
-    # assert prime_factors[5] == 13
+    prime_factors = find_prime_factors(4)
+    assert prime_factors[0] == 2

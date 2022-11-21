@@ -1,12 +1,3 @@
-"""
-"Prime Factorization" is finding which prime numbers multiply together to make the
-original number
-"""
-# get input, for every integer in the input check if this integer is a prime number
-# divide input by prime number = does it equal to another prime number?
-# prime numbers are 2, 3, 5, 7, 11
-
-
 def find_prime_factors(input) -> list:
     prime_numbers = []
     prime_factors = []
@@ -16,7 +7,6 @@ def find_prime_factors(input) -> list:
         for i in range(1, input + 1):
             if find_prime_number(i):
                 prime_numbers.append(i)
-    print("prime_numbers", prime_numbers)
     if prime_numbers[0] == 0:
         prime_factors.append(0)
     if prime_numbers[0] != 0 and len(prime_numbers) == 1:
@@ -24,9 +14,8 @@ def find_prime_factors(input) -> list:
             prime_factors.append(2)
     if len(prime_numbers) > 1:
         for m in prime_numbers:
-            if input / m == 1:
+            if m * m == input:
                 prime_factors.append(m)
-    print("prime factors", prime_factors)
 
     return prime_factors
 
