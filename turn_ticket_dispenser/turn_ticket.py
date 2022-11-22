@@ -1,9 +1,9 @@
-class TurnTicket(object): #  this returns number
+class TurnTicket(object):
     def __init__(self, turn_number):
         self.turn_number = turn_number
 
 
-class TurnNumberSequence(object):  # this increments number
+class TurnNumberSequence(object):
     _turnNumber = -1
 
     @staticmethod
@@ -15,7 +15,7 @@ class TurnNumberSequence(object):  # this increments number
 
 class TicketDispenser(object):
     def getTurnTicket(self):
-        newTurnNumber = TurnNumberSequence.next_turn_number()  # ?
-        newTurnTicket = TurnTicket(newTurnNumber)
+        newTurnNumber = TurnNumberSequence.next_turn_number()
+        newTurnTicket = TurnTicket(newTurnNumber).turn_number
 
         return newTurnTicket

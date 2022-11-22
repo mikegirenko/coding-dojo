@@ -117,4 +117,4 @@ _Kata: Text Converter_
 
 _Kata: Turn Ticket Dispenser_
 
-1. Write unit tests
+1. Write unit tests and refactor TicketDispenser class
