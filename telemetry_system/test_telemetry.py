@@ -47,5 +47,13 @@ class TelemetryDiagnosticControlsTest(unittest.TestCase):
         assert client.DIAGNOSTIC_MESSAGE == "AT#UD"
 
 
+    def test_check_transmission_sends_message_using_mock(self):
+        client = TelemetryClient  # note there are no ()
+        client.online_status = MagicMock(return_value=2)
+        diagnostics = TelemetryDiagnostics()
+        diagnostics.check_transmission()
+        assert client.DIAGNOSTIC_MESSAGE == "AT#UD"
+
+
 if __name__ == "__main__":
     unittest.main()
