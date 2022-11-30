@@ -123,3 +123,8 @@ _Kata: Turn Ticket Dispenser_
 _Kata: Telemetry System_
 
 1. Write unit tests
+
+
+_Kata: Reversi_
+
+1. Write a program
