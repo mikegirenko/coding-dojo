@@ -1,5 +1,5 @@
 import unittest
-from unittest.mock import patch
+from unittest.mock import patch, MagicMock
 
 from telemetry_system.telemetry import *
 
@@ -25,6 +25,14 @@ class TelemetryDiagnosticControlsTest(unittest.TestCase):
     @patch("telemetry_system.client.TelemetryClient.online_status")
     def test_check_transmission_receives_message(self, online_status):
         online_status.return_value = 2
+        diagnostics = TelemetryDiagnostics()
+        diagnostics.check_transmission()
+        assert diagnostics.diagnostic_info != ""
+
+
+    def test_check_transmission_receives_message_using_mock(self):
+        client_obj = TelemetryClient
+        client_obj.online_status = MagicMock(return_value=2)
         diagnostics = TelemetryDiagnostics()
         diagnostics.check_transmission()
         assert diagnostics.diagnostic_info != ""
