@@ -18,10 +18,9 @@ def test_check_if_can_be_flipped_row():
 
 def test_check_if_can_be_flipped_column():
     rows = [
-    [".", ".", ".", ".", ".", ".", ".", "."],
-    [".", ".", ".", ".", ".", ".", ".", "."],
-    [".", ".", ".", "W", "B", ".", ".", "."],
-    [".", ".", ".", ".", ".", ".", ".", "."],
-]
+        [".", ".", ".", ".", ".", ".", ".", "."],
+        [".", ".", ".", "W", "B", ".", ".", "."],
+        [".", ".", ".", ".", ".", ".", ".", "."],
+    ]
     index_can_be_flipped = check_if_can_be_flipped_column(rows, "B")
-    # assert index_can_be_flipped == 4
+    assert index_can_be_flipped == 0
