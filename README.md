@@ -129,3 +129,7 @@ _Kata: Reversi_
 
 1. Write a program  that takes a current board position together with information about whose turn it is, and returns
 a list of the legal moves for that player.
+
+
+_Kata: Roman Numerals_
+1. Write a function to convert from normal numbers to Roman Numerals
