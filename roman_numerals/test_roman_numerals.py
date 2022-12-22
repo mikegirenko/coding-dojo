@@ -16,3 +16,11 @@ def test_number_below_eleven():
 
 def test_number_below_fifty():
     assert obj.number_below_fifty(11) == "XI"
+    assert obj.number_below_fifty(12) == "XII"
+    assert obj.number_below_fifty(14) == "XIV"
+
+
+def test_convert_from_normal_to_roman():  # this is where both functions work
+    assert obj.convert_from_normal_to_roman(0) == "Romans did not have zero"
+    assert obj.convert_from_normal_to_roman(10) == "X"
+    assert obj.convert_from_normal_to_roman(11) == "XI"

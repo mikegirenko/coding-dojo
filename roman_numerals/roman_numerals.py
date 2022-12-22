@@ -22,15 +22,19 @@ class Roman:
 
     def number_below_fifty(self, normal_number):
         roman_number = ""
-        if normal_number == 11:
-            roman_number = "X" + ("I") # TODO continue here
+        if 10 < normal_number <= 13:
+            roman_number = "X" + ("I" * (normal_number - 10))
+        if normal_number == 14:
+            roman_number = "XIV"
+        if normal_number == 15:
+            pass   # TODO continue here
 
         return roman_number
 
     def convert_from_normal_to_roman(self, normal_number):
         roman_number = ""
         if normal_number < 11:
-            roman_number = self.number_below_elleven(normal_number)
+            roman_number = self.number_below_eleven(normal_number)
         if 11 <= normal_number < 50:
             roman_number = self.number_below_fifty(normal_number)
 
