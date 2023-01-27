@@ -13,7 +13,10 @@ class StringCalculator:
                 list_separated_by_comma = string_of_numbers.split(",")
                 for item in list_separated_by_comma:
                     if "\n" in item:
-                        list_of_numbers_separated_by_n = item.split("\n")
+                        if len(item.splitlines()) > 1: # TODO continue here
+                            sum_of_numbers = "Number expected but '\n' found at position 6."
+                        else:
+                            list_of_numbers_separated_by_n = item.split("\n")
                     else:
                         list_2_of_numbers_separated_by_comma.append(item)
                 for item in list_of_numbers_separated_by_n:
@@ -33,4 +36,6 @@ class StringCalculator:
 
 if __name__ == "__main__":
     obj = StringCalculator()
+    print(obj.add(""))
     print(obj.add("1, 2, 3"))
+    print(obj.add("1\n2, 3"))
