@@ -133,3 +133,8 @@ a list of the legal moves for that player.
 
 _Kata: Roman Numerals_
 1. Write a function to convert from normal numbers to Roman Numerals
+
+
+_Kata: String Calculator_
+1. Write a function to receive a string and then calculate it
+2. The function adds n number of arguments
