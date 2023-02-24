@@ -9,9 +9,9 @@ class StringCalculator:
         message = ""
         if string_of_numbers == "" and "\n" not in string_of_numbers:
             sum_of_numbers = "0"
-        if string_of_numbers != "" and string_of_numbers[-1] == " ":
+        elif string_of_numbers != "" and string_of_numbers[-1] == " ":
             message = "Number expected but EOF found."
-        if "\n" in string_of_numbers:
+        elif "\n" in string_of_numbers:
             list_separated_by_comma = string_of_numbers.split(",")
             for item in list_separated_by_comma:
                 if "\n" in item:
@@ -30,7 +30,11 @@ class StringCalculator:
                 sum_of_numbers = message
             else:
                 sum_of_numbers = sum(list_by_n) + sum(list_by_comma)
-        if "\n" not in string_of_numbers and string_of_numbers != "" and string_of_numbers[-1] != " ":
+        elif (
+            "\n" not in string_of_numbers
+            and string_of_numbers != ""
+            and string_of_numbers[-1] != " "
+        ):
             list_of_strings = string_of_numbers.split(",")
             for item in list_of_strings:
                 list_of_numbers.append(int(item))
