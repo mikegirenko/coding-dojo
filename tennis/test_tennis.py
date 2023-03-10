@@ -1,3 +1,4 @@
+from unittest.mock import patch, MagicMock
 from tennis.tennis import Tennis
 
 obj = Tennis()
@@ -8,6 +9,4 @@ def test_points():
 
 
 def test_game():
-    obj.game()
-
-
+    print(obj.game())
