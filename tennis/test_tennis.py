@@ -8,6 +8,6 @@ def test_points():
 
 
 def test_game():
-    print(obj.game())
+    obj.game()
 
 
