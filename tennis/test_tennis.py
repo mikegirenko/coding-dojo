@@ -5,8 +5,12 @@ obj = Tennis()
 
 
 def test_points():
-    print(obj.get_point())
+    point = obj.get_point()
+    assert point is not None
 
 
 def test_game():
-    print(obj.game())
+    game_score = obj.game()
+    assert type(game_score[0]) == int
+    assert type(game_score[1]) == int
+
