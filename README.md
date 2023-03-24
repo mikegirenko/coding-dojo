@@ -144,3 +144,7 @@ _Kata: Tennis_
 1. Implement tennis game
 2. Each set is one game
 3. Each player can have either of these points in one game “love” “15” “30” “40”
+
+
+_Kata: Anagram_
+1. Implement Anagram game
