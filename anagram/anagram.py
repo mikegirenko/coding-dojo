@@ -17,8 +17,14 @@ class Anagram:
         return list_of_data
 
 
-    def anagram_game(self):
-        pass
+    def anagram_game(self, original, list_of_anagrams_to_check) -> List:
+        anagram = []
+        for word in list_of_anagrams_to_check:
+            if self.find_anagram(original, word):
+                anagram.append(word)
+
+        return anagram
+
 
     def find_anagram(self, original, anagram):  # documenting is original, menu is anagram
         letter_count = 0
@@ -37,4 +43,6 @@ class Anagram:
 
 if __name__ == "__main__":
     obj = Anagram()
-    obj.anagram_game()
+    o = "documenting"
+    l = obj.read_input_data(INPUT_FILE)
+    print(obj.anagram_game(o, l))
