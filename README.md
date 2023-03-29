@@ -148,3 +148,4 @@ _Kata: Tennis_
 
 _Kata: Anagram_
 1. Implement Anagram game
+2. This game generates all two-word anagrams of the string “documenting”

@@ -1,11 +1,6 @@
 from typing import List
 
 INPUT_FILE = "word_list.txt"
-"""
-Write a program that generates all two-word anagrams of the string “documenting”.
-You must focus on the readability of your code, and you must not include any kind of
-documentations to it. F. e., documenting = menu
-"""
 
 
 class Anagram:
@@ -29,9 +24,7 @@ class Anagram:
 
         return anagram
 
-    def find_anagram(
-        self, original, anagram
-    ):  # documenting is original, menu is anagram
+    def find_anagram(self, original, anagram):
         letter_count = 0
         anagram_flag = False
         for letter in anagram:
@@ -51,6 +44,7 @@ if __name__ == "__main__":
         "Anagrams of the string 'documenting' are",
         obj.anagram_game(original_word, words_list),
     )
+
     original_word = "bread"
     words_list = obj.read_input_data(INPUT_FILE)
     print(
