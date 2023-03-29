@@ -51,3 +51,9 @@ if __name__ == "__main__":
         "Anagrams of the string 'documenting' are",
         obj.anagram_game(original_word, words_list),
     )
+    original_word = "bread"
+    words_list = obj.read_input_data(INPUT_FILE)
+    print(
+        "Anagrams of the string 'bread' are",
+        obj.anagram_game(original_word, words_list),
+    )
