@@ -1,4 +1,5 @@
 from typing import List
+
 INPUT_FILE = "word_list.txt"
 """
 Write a program that generates all two-word anagrams of the string “documenting”.
@@ -8,14 +9,17 @@ documentations to it. F. e., documenting = menu
 
 
 class Anagram:
-
     def read_input_data(self, a_file) -> List[str]:
         with open(a_file, "r") as file:
             read_data = file.read()
-        list_of_data = read_data.split("\n")
+        list_of_strings = read_data.split("\n")
+        list_of_data = []
+        for string in list_of_strings:
+            temp = string.split()
+            for word in temp:
+                list_of_data.append(word)
 
         return list_of_data
-
 
     def anagram_game(self, original, list_of_anagrams_to_check) -> List:
         anagram = []
@@ -25,8 +29,9 @@ class Anagram:
 
         return anagram
 
-
-    def find_anagram(self, original, anagram):  # documenting is original, menu is anagram
+    def find_anagram(
+        self, original, anagram
+    ):  # documenting is original, menu is anagram
         letter_count = 0
         anagram_flag = False
         for letter in anagram:
@@ -38,11 +43,11 @@ class Anagram:
         return anagram_flag
 
 
-
-
-
 if __name__ == "__main__":
     obj = Anagram()
-    o = "documenting"
-    l = obj.read_input_data(INPUT_FILE)
-    print(obj.anagram_game(o, l))
+    original_word = "documenting"
+    words_list = obj.read_input_data(INPUT_FILE)
+    print(
+        "Anagrams of the string 'documenting' are",
+        obj.anagram_game(original_word, words_list),
+    )
