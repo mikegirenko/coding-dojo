@@ -153,3 +153,4 @@ _Kata: Anagram_
 
 _Kata: Birthday Greetings_
 1. Send a birthday note to all the friends you have
+2. Friends born on February, 29th should have their Birthday greeted on February, 28th
