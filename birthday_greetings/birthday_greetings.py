@@ -65,8 +65,10 @@ class SendBirthdayNote:
         full_name_1 = f"{birthday_friends[0][1]} {birthday_friends[0][0]}"
         full_name_2 = f"{birthday_friends[1][1]} {birthday_friends[1][0]}"
         subject = "Subject: Birthday Reminder"
-        body = f"Dear {reminder_recipient}, Today is {full_name_1} and {full_name_2}'s birthday. " \
-               f"Don't forget to send them a message!"
+        body = (
+            f"Dear {reminder_recipient}, Today is {full_name_1} and {full_name_2}'s birthday. "
+            f"Don't forget to send them a message!"
+        )
 
         return subject, body
 
@@ -94,7 +96,6 @@ if __name__ == "__main__":
     )
     print("Current date is", current_date)
     print(subject, "\n", body)
-
 
     current_date = "1982/10/08"
     reminder_recipient = "Mary"

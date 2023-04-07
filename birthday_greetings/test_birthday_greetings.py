@@ -1,3 +1,5 @@
+from unittest.mock import patch
+
 from birthday_greetings.birthday_greetings import *
 
 obj = SendBirthdayNote()
@@ -40,6 +42,15 @@ def test_generate_single_note():
     print(obj.generate_single_note(list_of_friends, "1982/10/08", "Mary"))
 
 
-def test_generate_single_note_using_mock():
+@patch(
+    "birthday_greetings.birthday_greetings.SendBirthdayNote.determine_birthday_friend"
+)
+def test_generate_single_note_using_mock(mocked_birthday_friend):
     list_of_friends = obj.read_input_file(INPUT_FILE)
-    print(obj.generate_single_note(list_of_friends, "1982/10/08", "Mary"))
+    mocked_birthday_friend.return_value = [
+        "Vera",
+        "Brandon",
+        "1999/01/07",
+        "john.doe@foobar.com",
+    ]
+    print(obj.generate_single_note(list_of_friends, "1999/01/07", "Mary"))
