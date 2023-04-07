@@ -1,13 +1,15 @@
 INPUT_FILE = "list_of_friends"
 
-class SendBirthdayNote:
 
+class SendBirthdayNote:
     def read_input_file(self, file_name) -> list:
         final_list_of_friends = []
         with open(file_name) as file_object:
             lines = file_object.read()
             list_of_friends = lines.split("\n")
-        for friend in list_of_friends[1:]: # removing last_name, first_name, date_of_birth, email
+        for friend in list_of_friends[
+            1:
+        ]:  # removing last_name, first_name, date_of_birth, email
             clean_friend = friend.replace(" ", "")
             final_list_of_friends.append(clean_friend)
 
@@ -45,6 +47,18 @@ class SendBirthdayNote:
 
         return subject, body
 
+    def generate_note_for_someone_else(
+        self, list_of_friends, current_date, reminder_recipient
+    ):
+        birthday_friend = self.determine_birthday_friend(list_of_friends, current_date)
+        subject = "Subject: Birthday Reminder"
+        body = (
+            f"Dear {reminder_recipient}, Today is {birthday_friend[1]} {birthday_friend[0]}'s birthday. "
+            f"Don't forget to send him a message!"
+        )
+
+        return subject, body
+
 
 if __name__ == "__main__":
     obj = SendBirthdayNote()
@@ -59,5 +73,13 @@ if __name__ == "__main__":
     current_date = "1992/02/28"
     birthday_friend = obj.determine_birthday_friend(list_of_friends, current_date)
     subject, body = obj.generate_note(birthday_friend)
+    print("Current date is", current_date)
+    print(subject, "\n", body)
+
+    current_date = "1982/10/08"
+    reminder_recipient = "Ann"
+    subject, body = obj.generate_note_for_someone_else(
+        list_of_friends, current_date, reminder_recipient
+    )
     print("Current date is", current_date)
     print(subject, "\n", body)

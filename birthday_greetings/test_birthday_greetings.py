@@ -26,5 +26,10 @@ def test_send_birthday_note_february_twenty_nine():
 
 
 def test_generate_note():
-    friend = ['Doe', 'John', '1982/10/08', 'john.doe@foobar.com']
+    friend = ["Doe", "John", "1982/10/08", "john.doe@foobar.com"]
     print(obj.generate_note(friend))
+
+
+def test_generate_note_for_someone_else():
+    list_of_friends = obj.read_input_file(INPUT_FILE)
+    print(obj.generate_note_for_someone_else(list_of_friends, "1982/10/08", "Ann"))

@@ -154,3 +154,5 @@ _Kata: Anagram_
 _Kata: Birthday Greetings_
 1. Send a birthday note to all the friends you have
 2. Friends born on February, 29th should have their Birthday greeted on February, 28th
+3. Send a Birthday Reminder note when it is someone else birthday
+4. Send a single Birthday Reminder note
