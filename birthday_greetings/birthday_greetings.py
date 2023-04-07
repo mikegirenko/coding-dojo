@@ -7,7 +7,7 @@ class SendBirthdayNote:
         with open(file_name) as file_object:
             lines = file_object.read()
             list_of_friends = lines.split("\n")
-        for friend in list_of_friends[1:]: # removing  last_name, first_name, date_of_birth, email
+        for friend in list_of_friends[1:]: # removing last_name, first_name, date_of_birth, email
             clean_friend = friend.replace(" ", "")
             final_list_of_friends.append(clean_friend)
 
@@ -22,8 +22,6 @@ class SendBirthdayNote:
 
         return born_february_twenty_nine
 
-
-
     def determine_birthday_friend(self, list_of_friends, current_date):
         this_friend_gets_an_email = ""
         for friend in list_of_friends:
@@ -36,7 +34,7 @@ class SendBirthdayNote:
 
         return this_friend_gets_an_email
 
-    def generate_email(self, friend) -> tuple:
+    def generate_note(self, friend) -> tuple:
         subject = "Subject: Happy birthday!"
         body = f"Happy birthday, dear {friend[1]}!"
 
@@ -48,5 +46,5 @@ if __name__ == "__main__":
     list_of_friends = obj.read_input_file(INPUT_FILE)
     current_date = "1982/10/08"
     birthday_friend = obj.determine_birthday_friend(list_of_friends, current_date)
-    subject, body = obj.generate_email(birthday_friend)
+    subject, body = obj.generate_note(birthday_friend)
     print(subject, "\n", body)
