@@ -1,17 +1,22 @@
-INPUT_FILE = "list_of_friends"
+import os
 
+INPUT_FILE = "list_of_friends"
+INPUT_FILE_EMPTY = "list_of_friends_empty"
 
 class SendBirthdayNote:
     def read_input_file(self, file_name) -> list:
         final_list_of_friends = []
-        with open(file_name) as file_object:
-            lines = file_object.read()
-            list_of_friends = lines.split("\n")
-        for friend in list_of_friends[
-            1:
-        ]:  # removing last_name, first_name, date_of_birth, email
-            clean_friend = friend.replace(" ", "")
-            final_list_of_friends.append(clean_friend)
+        if os.stat(file_name).st_size > 0:
+            with open(file_name) as file_object:
+                lines = file_object.read()
+                list_of_friends = lines.split("\n")
+            for friend in list_of_friends[
+                1:
+            ]:  # removing last_name, first_name, date_of_birth, email
+                clean_friend = friend.replace(" ", "")
+                final_list_of_friends.append(clean_friend)
+        else:
+            raise RuntimeError
 
         return final_list_of_friends
 

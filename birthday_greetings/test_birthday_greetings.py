@@ -1,3 +1,4 @@
+import unittest
 from unittest.mock import patch
 
 from birthday_greetings.birthday_greetings import *
@@ -7,6 +8,10 @@ obj = SendBirthdayNote()
 
 def test_read_input_file():
     print(obj.read_input_file(INPUT_FILE))
+
+
+# def test_read_empty_input_file():
+#     obj.read_input_file(INPUT_FILE_EMPTY)
 
 
 def test_born_february_twenty_nine():
