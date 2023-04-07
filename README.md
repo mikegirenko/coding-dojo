@@ -156,3 +156,7 @@ _Kata: Birthday Greetings_
 2. Friends born on February, 29th should have their Birthday greeted on February, 28th
 3. Send a Birthday Reminder note when it is someone else birthday
 4. Send a single Birthday Reminder note
+
+
+_Kata: Code Cracker_
+1. Create a program that can crack any message using the decryption key
