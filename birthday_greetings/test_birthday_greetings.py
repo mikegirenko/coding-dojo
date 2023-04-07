@@ -32,4 +32,14 @@ def test_generate_note():
 
 def test_generate_note_for_someone_else():
     list_of_friends = obj.read_input_file(INPUT_FILE)
-    print(obj.generate_note_for_someone_else(list_of_friends, "1982/10/08", "Ann"))
+    print(obj.generate_note_for_someone_else(list_of_friends, "1982/10/08", "Mary"))
+
+
+def test_generate_single_note():
+    list_of_friends = obj.read_input_file(INPUT_FILE)
+    print(obj.generate_single_note(list_of_friends, "1982/10/08", "Mary"))
+
+
+def test_generate_single_note_using_mock():
+    list_of_friends = obj.read_input_file(INPUT_FILE)
+    print(obj.generate_single_note(list_of_friends, "1982/10/08", "Mary"))

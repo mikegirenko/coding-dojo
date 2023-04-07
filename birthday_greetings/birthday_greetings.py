@@ -29,21 +29,22 @@ class SendBirthdayNote:
                 born_february_twenty_nine = True
         return born_february_twenty_nine
 
-    def determine_birthday_friend(self, list_of_friends, current_date):
-        this_friend_gets_an_email = ""
+    def determine_birthday_friend(self, list_of_friends, current_date) -> list:
+        these_friends_get_an_email = []
         for friend in list_of_friends:
             split_friend = friend.split(",")
             if self.born_february_twenty_nine(str(split_friend)):
                 if current_date[5:10] == "02/28":
-                    this_friend_gets_an_email = split_friend
+                    these_friends_get_an_email = split_friend
             if split_friend[2] == current_date:
-                this_friend_gets_an_email = split_friend
+                these_friends_get_an_email.append(split_friend)
 
-        return this_friend_gets_an_email
+        return these_friends_get_an_email
 
     def generate_note(self, friend) -> tuple:
         subject = "Subject: Happy birthday!"
-        body = f"Happy birthday, dear {friend[1]}!"
+        friend_first_name = friend[1]
+        body = f"Happy birthday, dear {friend_first_name}!"
 
         return subject, body
 
@@ -53,9 +54,19 @@ class SendBirthdayNote:
         birthday_friend = self.determine_birthday_friend(list_of_friends, current_date)
         subject = "Subject: Birthday Reminder"
         body = (
-            f"Dear {reminder_recipient}, Today is {birthday_friend[1]} {birthday_friend[0]}'s birthday. "
+            f"Dear {reminder_recipient}, Today is {birthday_friend[0][1]} {birthday_friend[0][0]}'s birthday. "
             f"Don't forget to send him a message!"
         )
+
+        return subject, body
+
+    def generate_single_note(self, list_of_friends, current_date, reminder_recipient):
+        birthday_friends = self.determine_birthday_friend(list_of_friends, current_date)
+        full_name_1 = f"{birthday_friends[0][1]} {birthday_friends[0][0]}"
+        full_name_2 = f"{birthday_friends[1][1]} {birthday_friends[1][0]}"
+        subject = "Subject: Birthday Reminder"
+        body = f"Dear {reminder_recipient}, Today is {full_name_1} and {full_name_2}'s birthday. " \
+               f"Don't forget to send them a message!"
 
         return subject, body
 
@@ -66,7 +77,7 @@ if __name__ == "__main__":
 
     current_date = "1982/10/08"
     birthday_friend = obj.determine_birthday_friend(list_of_friends, current_date)
-    subject, body = obj.generate_note(birthday_friend)
+    subject, body = obj.generate_note(birthday_friend[0])
     print("Current date is", current_date)
     print(subject, "\n", body)
 
@@ -77,8 +88,17 @@ if __name__ == "__main__":
     print(subject, "\n", body)
 
     current_date = "1982/10/08"
-    reminder_recipient = "Ann"
+    reminder_recipient = "Mary"
     subject, body = obj.generate_note_for_someone_else(
+        list_of_friends, current_date, reminder_recipient
+    )
+    print("Current date is", current_date)
+    print(subject, "\n", body)
+
+
+    current_date = "1982/10/08"
+    reminder_recipient = "Mary"
+    subject, body = obj.generate_single_note(
         list_of_friends, current_date, reminder_recipient
     )
     print("Current date is", current_date)
