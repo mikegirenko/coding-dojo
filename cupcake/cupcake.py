@@ -4,8 +4,8 @@ import random
 class Cupcake:
     def name(self) -> list:
         item_name = ["Cake", "Cookie", "Cake with Chocolate", "Cookie with Chocolate", "Cookie Peanuts",
-                     "Cookie with Chocolate and Peanuts", "Cookie with Peanuts and Chocolate"]
-        item_index = random.randint(0, 6)
+                     "Cookie with Peanuts and Chocolate"]
+        item_index = random.randint(0, 5)
 
         return item_name[item_index]
 
@@ -24,10 +24,29 @@ class Cupcake:
 
         return price
 
+    def bundle_price(self, item_count, price):
+        total_price = 0
+        if item_count == 1:
+            total_price = price
+        if item_count > 1:
+            price_temp = price * item_count
+            discount = (price_temp / 100) * 10
+            total_price = price_temp - discount
+
+        return total_price
 
 
 if __name__ == "__main__":
     obj = Cupcake()
     item = obj.name()
     price = obj.price(item)
-    print("The cake is", item, " The price is", price)
+    print("The cake is", item, ". The price is $", price)
+
+    items = []
+    for i in range(0, 2):
+        items.append(obj.name())
+    print("The bundle is", items)
+    # ['Cake with Chocolate', 'Cookie Peanuts']
+
+    for item in items:
+        pass
