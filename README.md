@@ -160,3 +160,8 @@ _Kata: Birthday Greetings_
 
 _Kata: Code Cracker_
 1. Create a program that can crack any message using the decryption key
+
+
+_Kata: Cupcake_
+1. Write a program that can build many cakes with many toppings like
+2. Write a function or method they can show the name of cake
