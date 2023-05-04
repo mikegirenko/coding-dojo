@@ -25,25 +25,29 @@ class Cupcake:
         return price
 
 
-    def bundle_price_v2(self, bundle):
+    # TODO We can build a Bundle with 1 Cupcake and 1 Cookie and check price or description
+    def bundle_price(self, items_in_bundle_count):
+        items = []
+        prices = []
+        for i in range(0, items_in_bundle_count):
+            items.append(self.name())
+        for item in items:
+            prices.append(self.price(item))
         total_price = 0
-        counter = 0
-        #while counter < len(bundle):
-
-
-
-        return total_price
-
-
-    def bundle_price(self, item_count, price):
-        total_price = 0
-        if item_count == 1:
-            total_price = price
-        if item_count > 1:
+        if items_in_bundle_count == 1:
+            total_price = prices[0]
+        if items_in_bundle_count > 1:
             price_temp = price * item_count
             discount = (price_temp / 100) * 10
             total_price = price_temp - discount
 
+        return total_price
+
+
+    def bundle_price_v2(self, bundle):
+        total_price = 0
+        counter = 0
+        #while counter < len(bundle):
         return total_price
 
 

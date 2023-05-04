@@ -1,3 +1,5 @@
+from unittest.mock import patch
+
 from cupcake.cupcake import *
 
 obj = Cupcake()
@@ -13,12 +15,13 @@ def test_price():
     assert obj.price(item) == 1
 
 
-def test_bundle_price_one_item():
-    item_count = 1
-    price = 2
-    assert obj.bundle_price(item_count, price) == 1
+@patch("cupcake.cupcake.Cupcake.name")
+def test_bundle_price_one_item(mock_name):
+    bundle = 1
+    mock_name.return_value = "Cookie Peanuts"
+    assert obj.bundle_price(bundle) == 2.2
 
-
+#TODO next - Bundle with 1 Cupcake and 1 Cookie
 def test_bundle_price_two_items():
     item_count = 2
     price = 2
