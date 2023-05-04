@@ -24,6 +24,17 @@ class Cupcake:
 
         return price
 
+
+    def bundle_price_v2(self, bundle):
+        total_price = 0
+        counter = 0
+        #while counter < len(bundle):
+
+
+
+        return total_price
+
+
     def bundle_price(self, item_count, price):
         total_price = 0
         if item_count == 1:
