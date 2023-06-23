@@ -3,51 +3,49 @@ import random
 
 class Cupcake:
     def name(self) -> list:
-        item_name = ["Cake", "Cookie", "Cake with Chocolate", "Cookie with Chocolate", "Cookie Peanuts",
-                     "Cookie with Peanuts and Chocolate"]
-        item_index = random.randint(0, 5)
+        item_name = [
+            "Cupcake",
+            "Cookie",
+            "Cupcake with Chocolate",
+            "Cookie with Chocolate",
+            "Cookie with Peanuts",
+        ]
+        item_index = random.randint(0, 4)
 
         return item_name[item_index]
 
-    def price(self, item):
+    def price(self, item) -> int:
         price = 0
-        if item == "Cake":
+        if item == "Cupcake":
             price = 1
         if item == "Cookie":
             price = 2
-        if item == "Cake with Chocolate":
+        if item == "Cupcake with Chocolate":
             price = 1.1
         if item == "Cookie with Chocolate":
             price = 2.1
-        if item == "Cookie Peanuts":
+        if item == "Cookie with Peanuts":
             price = 2.2
 
         return price
 
-
-    # TODO We can build a Bundle with 1 Cupcake and 1 Cookie and check price or description
-    def bundle_price(self, items_in_bundle_count):
-        items = []
-        prices = []
-        for i in range(0, items_in_bundle_count):
-            items.append(self.name())
-        for item in items:
-            prices.append(self.price(item))
+    def bundle_price(self, items_in_bundle) -> int:
+        price_without_discount = []
+        price_temp = 0
         total_price = 0
-        if items_in_bundle_count == 1:
-            total_price = prices[0]
-        if items_in_bundle_count > 1:
-            price_temp = price * item_count
+        for item in items_in_bundle:
+            price_without_discount.append(self.price(item))
+        if len(items_in_bundle) == 0:
+            total_price = 0
+        if len(items_in_bundle) == 1:
+            total_price = price_without_discount[0]
+        # The price of a bundle is 10% less than prices of each cake.
+        if len(items_in_bundle) > 1:
+            for price in price_without_discount:
+                price_temp += price
             discount = (price_temp / 100) * 10
             total_price = price_temp - discount
 
-        return total_price
-
-
-    def bundle_price_v2(self, bundle):
-        total_price = 0
-        counter = 0
-        #while counter < len(bundle):
         return total_price
 
 
@@ -55,13 +53,16 @@ if __name__ == "__main__":
     obj = Cupcake()
     item = obj.name()
     price = obj.price(item)
-    print("The cake is", item, ". The price is $", price)
+    print(f"The cake is {item}. The price is ${price}")
 
     items = []
-    for i in range(0, 2):
+    for i in range(0, 2):  # this makes bundle with 2 items
         items.append(obj.name())
-    print("The bundle is", items)
-    # ['Cake with Chocolate', 'Cookie Peanuts']
+    bundle_price = obj.bundle_price(items)
+    print(f"The bundle is {items}." "The bundle price is", "%.2f" % bundle_price)
 
-    for item in items:
-        pass
+    items = []
+    for i in range(0, 3):  # this makes bundle with 3 items
+        items.append(obj.name())
+    bundle_price = obj.bundle_price(items)
+    print(f"The bundle is {items}." "The bundle price is", "%.2f" % bundle_price)
