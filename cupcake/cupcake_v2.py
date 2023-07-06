@@ -5,6 +5,8 @@
 # bundle and single cake (order is "cupcake and cookie, without toppings" AND "cupcake with toppings")
 # so, order dictates bundle and total price
 
+# 07/06/23 giving up on this kata
+
 class Base:
     cake = ["Cupcake", "Cookie"]
 
