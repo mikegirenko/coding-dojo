@@ -170,3 +170,6 @@ _Kata: Cupcake_
 
 _Kata: Train Reservation_
 1. Write a program that can reserve seats on a particular train
+
+_Kata: Christmas delivery
+1. Write a program that can load Santa's Sleigh
