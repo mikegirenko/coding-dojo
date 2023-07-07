@@ -166,3 +166,7 @@ _Kata: Cupcake_
 1. Write a program that can build many cakes with many toppings
 2. Write a function or method they can show the name of cake
 3. Write a function that can show the price of cake
+
+
+_Kata: Train Reservation_
+1. Write a program that can reserve seats on a particular train
