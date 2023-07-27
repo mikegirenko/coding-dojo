@@ -8,13 +8,13 @@ Sugarplum Mary, and Wunorse Openslae
 """
 
 elf_list = ["Alabaster Snowball", "Bushy Evergreen"]
-toys_list = ["Toy Machine 1", "Toy Machine 2", "Toy Machine 3"]
+toy_machine = ["Present 1", "Present 2", "Present 3"]
 presents_by_family = {"Smith family": 1, "Kaie family": 2}
 
 class SantasSleight:
     def sleigh(self, toys_list:list, elf_list:list, presents_by_family:dict) -> list:
         loaded_sleight = []
-        i = 0  # keep removing first elf
+        i = 0  # it keeps removing first elf
         elf_went_on_delivery = []
         for toy in toys_list:
             while len(toys_list) != len(loaded_sleight):
@@ -33,5 +33,5 @@ class SantasSleight:
 
 if __name__ == "__main__":
     obj = SantasSleight()
-    sleight = obj.sleigh(toys_list, elf_list, presents_by_family)
+    sleight = obj.sleigh(toy_machine, elf_list, presents_by_family)
     print("Santa's Sleigh has", sleight)
