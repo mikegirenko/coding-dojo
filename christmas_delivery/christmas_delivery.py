@@ -29,7 +29,7 @@ class SantasSleight:
                         loaded_sleight.append(toy)
 
         return loaded_sleight
-# TODO next User Story 3
+# TODO next User Story 3 - deliver presents by family when possible.
 
 if __name__ == "__main__":
     obj = SantasSleight()
